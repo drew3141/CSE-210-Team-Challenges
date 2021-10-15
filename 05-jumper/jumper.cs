@@ -10,6 +10,8 @@ namespace _05_jumper
         public string characterList = @"/‾‾‾\\/\O//|\/\";
         public List<char> displayedCharacters = new List<char>();
         //" /","_","\ ","\ ", "/","\ ", "O","/","_","_"," | ","/","\ "
+        
+        //Adds/Replaces all characters in the textImage list; resets _WrongGuesses
         public void initializeJumper()
         {
             if (displayedCharacters.Count < 1)
@@ -28,31 +30,36 @@ namespace _05_jumper
             }
             _WrongGuesses=0;
         }
+        
+        //Increments wrongGuess counter and replaces a character in the jumper image with a blank space
         public void IncrementGuess()
         {
             _WrongGuesses++;
             displayedCharacters[_WrongGuesses-1]=' ';
         }
+
+        //Displays the text image of the Jumper
         public void DisplayText()
         {
             for (int i = 0; i < 5; i++)
             {
                 Console.Write(displayedCharacters[i]);
             }
-            Console.WriteLine();
-            Console.WriteLine($"{displayedCharacters[5]}  {displayedCharacters[6]}");
+            Console.WriteLine($"\n {displayedCharacters[5]}  {displayedCharacters[6]}");
             Console.Write(" ");
             for (int i = 7; i < 10; i++)
             {
                 Console.Write(displayedCharacters[i]);
             }
-            Console.WriteLine();
-            Console.WriteLine($" {displayedCharacters[10]}{displayedCharacters[11]}{displayedCharacters[12]}");
+            Console.WriteLine($"\n {displayedCharacters[10]}{displayedCharacters[11]}{displayedCharacters[12]}");
             Console.WriteLine($"  {displayedCharacters[13]}{displayedCharacters[14]}");
+            Console.WriteLine("\n ^^^^^");
         }
+
+        //Function to return boolean if the jumper is Alive
         public bool IsAlive()
         {
-            if (_WrongGuesses >= 13)
+            if (_WrongGuesses >= 14)
             {
                 return false;
             }
