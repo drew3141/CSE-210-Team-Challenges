@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace _05_jumper
 {
-    class wordBank
+    class WordBank
     {
         public List<string> _words = new List<string>();
         public String _secretWord = "";
