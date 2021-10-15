@@ -41,17 +41,10 @@ namespace _05_jumper
         //Displays the text image of the Jumper
         public void DisplayText()
         {
-            for (int i = 0; i <= 4; i++)
-            {
-                Console.Write(displayedCharacters[i]);
-            }
-            Console.WriteLine($"\n {displayedCharacters[5]}  {displayedCharacters[6]}");
-            Console.Write(" ");
-            for (int i = 7; i <= 9; i++)
-            {
-                Console.Write(displayedCharacters[i]);
-            }
-            Console.WriteLine($"\n {displayedCharacters[10]}{displayedCharacters[11]}{displayedCharacters[12]}");
+            Console.WriteLine($"{displayedCharacters[0]}{displayedCharacters[1]}{displayedCharacters[2]}{displayedCharacters[3]}{displayedCharacters[4]}");
+            Console.WriteLine($"{displayedCharacters[5]}   {displayedCharacters[6]}");
+            Console.WriteLine($" {displayedCharacters[7]}{displayedCharacters[8]}{displayedCharacters[9]}");
+            Console.WriteLine($" {displayedCharacters[10]}{displayedCharacters[11]}{displayedCharacters[12]}");
             Console.WriteLine($"  {displayedCharacters[13]}{displayedCharacters[14]}");
             Console.WriteLine("\n ^^^^^");
         }
@@ -59,7 +52,7 @@ namespace _05_jumper
         //Function to return boolean if the jumper is Alive
         public bool IsAlive()
         {
-            if (_WrongGuesses >= 14)
+            if (_WrongGuesses >= 15)
             {
                 return false;
             }
