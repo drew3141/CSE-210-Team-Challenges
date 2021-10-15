@@ -41,13 +41,13 @@ namespace _05_jumper
         //Displays the text image of the Jumper
         public void DisplayText()
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i <= 4; i++)
             {
                 Console.Write(displayedCharacters[i]);
             }
             Console.WriteLine($"\n {displayedCharacters[5]}  {displayedCharacters[6]}");
             Console.Write(" ");
-            for (int i = 7; i < 10; i++)
+            for (int i = 7; i <= 9; i++)
             {
                 Console.Write(displayedCharacters[i]);
             }
