@@ -6,5 +6,4 @@ public char getUserInput()
     char userLetter = Console.ReadLine();
     return userLetter;
 }
-
 }
