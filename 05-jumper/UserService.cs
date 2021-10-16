@@ -1,9 +1,10 @@
+using System;
 class UserService
 {
-public char getUserInput()
+public string getUserInput()
 {
     Console.WriteLine("Please enter a letter: ");
-    char userLetter = Console.ReadLine();
+    string userLetter = Console.ReadLine();
     return userLetter;
 }
 }
