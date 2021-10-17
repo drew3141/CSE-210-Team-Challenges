@@ -65,8 +65,10 @@ namespace _05_jumper
             string word = _userService.getUserInput();
             char letter = char.Parse(word);
             _wordBank.CheckInWord(letter);
-            _jumper.IncrementGuess();
-            
+            if (!_wordBank.CheckInWord(letter))
+            {
+                _jumper.IncrementGuess();
+            }
             
             // Keep playing if the hider is not found (the ! symbol means not)
             _keepPlaying = _jumper.IsAlive();
