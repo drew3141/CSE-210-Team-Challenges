@@ -40,7 +40,7 @@ namespace _05_jumper
 
             while (_keepPlaying)
             {
-                if (_wordBank.isGameWon())
+                if (_wordBank.isGameWon() == true)
                 {
                     Console.WriteLine("You have safely landed!");
                     return;
