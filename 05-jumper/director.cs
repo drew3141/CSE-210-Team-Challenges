@@ -51,10 +51,7 @@ namespace _05_jumper
         /// </summary>
         public void GetInputs()
         {
-            
             _wordBank.DisplayWord();
-            
-            
         }
 
         /// <summary>
@@ -72,7 +69,7 @@ namespace _05_jumper
             
             // Keep playing if the hider is not found (the ! symbol means not)
             _keepPlaying = _jumper.IsAlive();
-
+            _keepPlaying = !_wordBank.isGameWon();
         }
 
         /// <summary>
