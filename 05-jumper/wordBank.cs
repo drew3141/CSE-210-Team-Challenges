@@ -19,6 +19,8 @@ namespace _05_jumper
         {
             _words.Add("tacos");
             _words.Add("pies");
+            _words.Add("pizza");
+            _words.Add("provolone");
 
             Random r = new Random();
             _wordIndex = r.Next(0, _words.Count);
