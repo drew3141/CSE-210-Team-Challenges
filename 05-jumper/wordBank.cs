@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace _05_jumper
 {
-    class WordBank
+    public class WordBank
     {
         public List<string> _words = new List<string>();
         public String _secretWord = "";
@@ -15,7 +15,7 @@ namespace _05_jumper
             SelectRandomWord();
         }
 
-        public void SelectRandomWord()
+        public string SelectRandomWord()
         {
             _words.Add("tacos");
 
@@ -27,6 +27,7 @@ namespace _05_jumper
             {
                 _displayWord += "_";
             }
+            return _secretWord;
         }
 
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace _05_jumper
 {
-    class Jumper
+    public class Jumper
     {
         public int _WrongGuesses = 0;
         public string characterList = @"/‾‾‾\\/\O//|\/\";
