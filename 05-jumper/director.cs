@@ -68,8 +68,15 @@ namespace _05_jumper
             }
             
             // Keep playing if the hider is not found (the ! symbol means not)
-            _keepPlaying = _jumper.IsAlive();
-            _keepPlaying = !_wordBank.isGameWon();
+            if (_jumper.IsAlive()&&!_wordBank.isGameWon())
+            {
+                _keepPlaying= true;
+            }
+            else
+            {
+                Console.WriteLine("You lost!");
+                _keepPlaying=false;
+            }
         }
 
         /// <summary>
