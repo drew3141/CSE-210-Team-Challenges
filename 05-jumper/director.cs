@@ -34,7 +34,10 @@ namespace _05_jumper
         /// </summary>
         public void StartGame()
         {
-            
+            string message = _wordBank.SelectRandomWord();
+            _jumper.initializeJumper();
+            _jumper.DisplayText();
+
             while (_keepPlaying)
             {
                 GetInputs();
@@ -48,9 +51,9 @@ namespace _05_jumper
         /// </summary>
         public void GetInputs()
         {
-            string message = _wordBank.SelectRandomWord();
+            
             _wordBank.DisplayWord();
-            _jumper.initializeJumper();
+            
             
         }
 
