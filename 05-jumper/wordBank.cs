@@ -18,6 +18,7 @@ namespace _05_jumper
         public string SelectRandomWord()
         {
             _words.Add("tacos");
+            _words.Add("pies");
 
             Random r = new Random();
             _wordIndex = r.Next(0, _words.Count);
