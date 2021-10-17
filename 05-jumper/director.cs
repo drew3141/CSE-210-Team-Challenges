@@ -51,7 +51,7 @@ namespace _05_jumper
             string message = _wordBank.SelectRandomWord();
             _wordBank.DisplayWord();
             _jumper.initializeJumper();
-            _jumper.DisplayText();
+            
         }
 
         /// <summary>
@@ -62,6 +62,8 @@ namespace _05_jumper
             string word = _userService.getUserInput();
             char letter = char.Parse(word);
             _wordBank.CheckInWord(letter);
+            _jumper.IncrementGuess();
+            
             
             // Keep playing if the hider is not found (the ! symbol means not)
             _keepPlaying = _jumper.IsAlive();
@@ -73,6 +75,7 @@ namespace _05_jumper
         /// </summary>
         public void DoOutputs()
         {
+            
             // old code
             //string hint = _hider.GetHint();
             _jumper.DisplayText();
