@@ -74,7 +74,14 @@ namespace _05_jumper
             }
             else
             {
-                Console.WriteLine("You lost!");
+                if(!_jumper.IsAlive())
+                {
+                    Console.WriteLine("You lost!");
+                }
+                else if (_wordBank.isGameWon())
+                {
+                    Console.WriteLine("You won!");
+                }
                 _keepPlaying=false;
             }
         }

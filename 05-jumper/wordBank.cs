@@ -61,7 +61,6 @@ namespace _05_jumper
         {
             if (_secretWord == _displayWord)
             {
-                Console.WriteLine("You have won!");
                 return true;
             }
             else 
