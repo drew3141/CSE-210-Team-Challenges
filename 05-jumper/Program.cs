@@ -6,7 +6,7 @@ namespace _05_jumper
     {
         static void Main()
         {
-            Console.WriteLine("Starting point for the Jumper project.");
+            Console.WriteLine("You've Jumped!! The Parachut Is Your Lifeline!");
             Director theDirector = new Director();
             theDirector.StartGame();
         }

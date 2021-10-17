@@ -34,6 +34,7 @@ namespace _05_jumper
         /// </summary>
         public void StartGame()
         {
+            
             while (_keepPlaying)
             {
                 GetInputs();
@@ -48,12 +49,9 @@ namespace _05_jumper
         public void GetInputs()
         {
             string message = _wordBank.SelectRandomWord();
-            Console.WriteLine(message);
+            _wordBank.DisplayWord();
+            _jumper.initializeJumper();
             _jumper.DisplayText();
-
-            //string prompt = "Guess a letter: ";
-            string letter = _userService.getUserInput();
-
         }
 
         /// <summary>
@@ -61,10 +59,12 @@ namespace _05_jumper
         /// </summary>
         public void DoUpdates()
         {
-            //_hider.Watch(_seeker._location);
+            string word = _userService.getUserInput();
+            char letter = char.Parse(word);
+            _wordBank.CheckInWord(letter);
             
             // Keep playing if the hider is not found (the ! symbol means not)
-            _keepPlaying = !_jumper.IsAlive();
+            _keepPlaying = _jumper.IsAlive();
 
         }
 
