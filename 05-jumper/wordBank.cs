@@ -16,12 +16,15 @@ namespace _05_jumper
             SelectRandomWord();
         }
 
-        public string SelectRandomWord()
+        public void ReadWordList()
         {
-            _words.Add("tacos");
-            _words.Add("pies");
-            _words.Add("pizza");
-            _words.Add("provolone");
+            String[] fileWords = System.IO.File.ReadAllLines(@"Words.txt");
+            _words.AddRange(fileWords);
+        }
+
+        public void SelectRandomWord()
+        {
+            ReadWordList();
 
             Random r = new Random();
             _wordIndex = r.Next(0, _words.Count);
@@ -31,7 +34,6 @@ namespace _05_jumper
             {
                 _displayWord += "_";
             }
-            return _secretWord;
         }
 
 
@@ -42,8 +44,11 @@ namespace _05_jumper
 
             if (correctGuess)
             {
+<<<<<<< HEAD
                 rightGuesses++;
                 //TODO interate through secret word, everytime guess letter is encountered, replace with the correct character
+=======
+>>>>>>> 5aa4fe1ed58243ebab6bc530d607fbc045065ecc
                 for (int i =0; i < _secretWord.Length; i++)
                 {
                     char letter = _secretWord[i];
@@ -75,6 +80,16 @@ namespace _05_jumper
         public void DisplayWord()
         {
             Console.WriteLine(_displayWord);
+        }
+
+        public bool IsVictory()
+        {
+            bool playerWon = false;
+            if (_displayWord.ToUpper().Equals(_secretWord.ToUpper()))
+            {
+                playerWon = true;
+            }
+            return playerWon;
         }
     }
 }
