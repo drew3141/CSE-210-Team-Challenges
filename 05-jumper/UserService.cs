@@ -1,10 +1,13 @@
-class UserService
+using System;
+namespace _05_jumper
 {
-public char getUserInput()
+public class UserService
+{
+public string getUserInput()
 {
     Console.WriteLine("Please enter a letter: ");
-    char userLetter = Console.ReadLine();
+    string userLetter = Console.ReadLine();
     return userLetter;
 }
-
+}
 }
