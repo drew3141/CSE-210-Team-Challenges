@@ -7,7 +7,7 @@ namespace _05_jumper
     public class Jumper
     {
         public int _WrongGuesses = 0;
-        public string characterList = @"‾‾‾/\\/\O//|\/\";
+        public string characterList = @"___/\\/\O//|\/\";
         public List<char> displayedCharacters = new List<char>();
         //" /","_","\ ","\ ", "/","\ ", "O","/","_","_"," | ","/","\ "
         
