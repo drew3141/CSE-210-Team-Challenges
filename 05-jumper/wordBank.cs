@@ -9,7 +9,7 @@ namespace _05_jumper
         public String _secretWord = "";
         public int _wordIndex = -1;
         public String _displayWord = "";
-        public int rightGuesses = 0;
+        public String _alreadyGuessed = "";
 
         public WordBank()
         {
@@ -39,11 +39,9 @@ namespace _05_jumper
         public bool CheckInWord(char guess)
         {
             bool correctGuess = _secretWord.Contains(guess.ToString());
-
+            _alreadyGuessed+=$"{guess.ToString()} ";
             if (correctGuess)
             {
-                rightGuesses++;
-                //TODO interate through secret word, everytime guess letter is encountered, replace with the correct character
                 for (int i =0; i < _secretWord.Length; i++)
                 {
                     char letter = _secretWord[i];
@@ -73,6 +71,7 @@ namespace _05_jumper
         //the guesser to guess the same letter more than once.
         public void DisplayWord()
         {
+            Console.WriteLine($"Guesses: {_alreadyGuessed}");
             Console.WriteLine(_displayWord);
         }
     }

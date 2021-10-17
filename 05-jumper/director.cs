@@ -61,7 +61,6 @@ namespace _05_jumper
         {
             string word = _userService.getUserInput();
             char letter = char.Parse(word);
-            _wordBank.CheckInWord(letter);
             if (!_wordBank.CheckInWord(letter))
             {
                 _jumper.IncrementGuess();
@@ -76,7 +75,7 @@ namespace _05_jumper
             {
                 if(!_jumper.IsAlive())
                 {
-                    Console.WriteLine("You lost!");
+                    Console.WriteLine($"You lost! The word was: {_wordBank._secretWord}");
                 }
                 else if (_wordBank.isGameWon())
                 {
