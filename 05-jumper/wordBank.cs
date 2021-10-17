@@ -12,7 +12,7 @@ namespace _05_jumper
 
         public WordBank()
         {
-            SelectRandomWord();
+            ReadWordList();
         }
 
         public void ReadWordList()
@@ -23,18 +23,16 @@ namespace _05_jumper
 
         public void SelectRandomWord()
         {
-            ReadWordList();
-
             Random r = new Random();
             _wordIndex = r.Next(0, _words.Count);
             _secretWord = _words[_wordIndex];
+            _displayWord = "";
 
             foreach (char letter in _secretWord)
             {
                 _displayWord += "_";
             }
         }
-
 
         //checks if the guess from UserService is in the secret word
         public bool CheckInWord(char guess)
