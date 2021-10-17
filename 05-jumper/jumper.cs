@@ -7,7 +7,7 @@ namespace _05_jumper
     public class Jumper
     {
         public int _WrongGuesses = 0;
-        public string characterList = @"/‾‾‾\\/\O//|\/\";
+        public string characterList = @"‾‾‾/\\/\O//|\/\";
         public List<char> displayedCharacters = new List<char>();
         //" /","_","\ ","\ ", "/","\ ", "O","/","_","_"," | ","/","\ "
         
@@ -41,11 +41,12 @@ namespace _05_jumper
         //Displays the text image of the Jumper
         public void DisplayText()
         {
-            Console.WriteLine($"{displayedCharacters[0]}{displayedCharacters[1]}{displayedCharacters[2]}{displayedCharacters[3]}{displayedCharacters[4]}");
+            Console.WriteLine($" {displayedCharacters[0]}{displayedCharacters[1]}{displayedCharacters[2]}");
+            Console.WriteLine($"{displayedCharacters[3]}   {displayedCharacters[4]}");
             Console.WriteLine($"{displayedCharacters[5]}   {displayedCharacters[6]}");
             Console.WriteLine($" {displayedCharacters[7]}{displayedCharacters[8]}{displayedCharacters[9]}");
             Console.WriteLine($" {displayedCharacters[10]}{displayedCharacters[11]}{displayedCharacters[12]}");
-            Console.WriteLine($"  {displayedCharacters[13]}{displayedCharacters[14]}");
+            Console.WriteLine($" {displayedCharacters[13]}{displayedCharacters[14]}");
             Console.WriteLine("\n ^^^^^");
         }
 
