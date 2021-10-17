@@ -32,6 +32,7 @@ namespace _05_jumper
             Random r = new Random();
             _wordIndex = r.Next(0, _words.Count);
             _secretWord = _words[_wordIndex];
+            Console.WriteLine(_secretWord);
 
             foreach (char letter in _secretWord)
             {
@@ -65,8 +66,8 @@ namespace _05_jumper
         }
         public bool isGameWon()
         {
-            int length = _secretWord.Length;
-            if (length == rightGuesses)
+            int length = _displayWord.Length;
+            if (length == (rightGuesses-1))
             {
                 Console.WriteLine("You have won!");
                 return true;
