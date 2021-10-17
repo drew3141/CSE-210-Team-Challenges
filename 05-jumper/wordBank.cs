@@ -9,19 +9,19 @@ namespace _05_jumper
         public String _secretWord = "";
         public int _wordIndex = -1;
         public String _displayWord = "";
+        public int rightGuesses = 0;
 
         public WordBank()
         {
             ReadWordList();
         }
-
         public void ReadWordList()
         {
             String[] fileWords = System.IO.File.ReadAllLines(@"Words.txt");
             _words.AddRange(fileWords);
         }
-
-        public void SelectRandomWord()
+        //public void SelectRandomWord()
+        public string SelectRandomWord()
         {
             Random r = new Random();
             _wordIndex = r.Next(0, _words.Count);
@@ -32,6 +32,7 @@ namespace _05_jumper
             {
                 _displayWord += "_";
             }
+            return _secretWord;
         }
 
         //checks if the guess from UserService is in the secret word
@@ -41,6 +42,8 @@ namespace _05_jumper
 
             if (correctGuess)
             {
+                rightGuesses++;
+                //TODO interate through secret word, everytime guess letter is encountered, replace with the correct character
                 for (int i =0; i < _secretWord.Length; i++)
                 {
                     char letter = _secretWord[i];
@@ -54,22 +57,25 @@ namespace _05_jumper
 
             return correctGuess;
         }
+        public bool isGameWon()
+        {
+            int length = _secretWord.Length;
+            if (length == rightGuesses)
+            {
+                Console.WriteLine("You have won!");
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+        }
 
         //displays the word and has an if statement disallowing
         //the guesser to guess the same letter more than once.
         public void DisplayWord()
         {
             Console.WriteLine(_displayWord);
-        }
-
-        public bool IsVictory()
-        {
-            bool playerWon = false;
-            if (_displayWord.ToUpper().Equals(_secretWord.ToUpper()))
-            {
-                playerWon = true;
-            }
-            return playerWon;
         }
     }
 }
