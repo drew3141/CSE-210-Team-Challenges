@@ -46,7 +46,7 @@ namespace _05_jumper
             Console.WriteLine($"{displayedCharacters[5]}   {displayedCharacters[6]}");
             Console.WriteLine($" {displayedCharacters[7]}{displayedCharacters[8]}{displayedCharacters[9]}");
             Console.WriteLine($" {displayedCharacters[10]}{displayedCharacters[11]}{displayedCharacters[12]}");
-            Console.WriteLine($"  {displayedCharacters[13]}{displayedCharacters[14]}");
+            Console.WriteLine($" {displayedCharacters[13]} {displayedCharacters[14]}");
             Console.WriteLine("\n^^^^^^");
         }
 
