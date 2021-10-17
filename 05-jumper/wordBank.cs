@@ -9,6 +9,7 @@ namespace _05_jumper
         public String _secretWord = "";
         public int _wordIndex = -1;
         public String _displayWord = "";
+        public int rightGuesses = 0;
 
         public WordBank()
         {
@@ -41,6 +42,7 @@ namespace _05_jumper
 
             if (correctGuess)
             {
+                rightGuesses++;
                 //TODO interate through secret word, everytime guess letter is encountered, replace with the correct character
                 for (int i =0; i < _secretWord.Length; i++)
                 {
@@ -54,6 +56,18 @@ namespace _05_jumper
             }
 
             return correctGuess;
+        }
+        public bool isGameWon()
+        {
+            int length = _secretWord.Length;
+            if (length == rightGuesses)
+            {
+            return true;
+            }
+            else 
+            {
+                return false;
+            }
         }
 
         //displays the word and has an if statement disallowing
