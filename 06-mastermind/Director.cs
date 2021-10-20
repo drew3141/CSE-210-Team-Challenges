@@ -13,17 +13,13 @@ namespace _06_mastermind
         private Player player1 = new Player("Player 1");
         private Player player2 = new Player("Player 2");
         
-         //Constructor to set-up players for game
-        public Director()
+
+        public void StartGame()
         {
             player1.SetName(userIO.GetStringInput("Enter a name for player 1: "));
             player2.SetName(userIO.GetStringInput("Enter a name for player 2: "));
             playerRoster.AddPlayer(player1);
             playerRoster.AddPlayer(player2);
-        }
-        public void StartGame()
-        {
-            
             while (_keepPlaying)
             {
                 GetInputs();
@@ -39,10 +35,13 @@ namespace _06_mastermind
         public void DoUpdates()
         {
             playerRoster.AdvanceNextPlayer();
+            //_keepPlaying = !(codeMaster.HasWon());
+            //codeMaster.getHint();
         }
         public void DoOutputs()
         {
-
+            //board.DisplayBoard();
+            //
         }
     }
 }
