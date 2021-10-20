@@ -4,18 +4,22 @@ namespace _06_mastermind
 {
     class Director
     {
+        //Creating objects/variables for director
         private bool _keepPlaying = true;
+        private Board b = new Board();
+        private Mastermind codeMaster = new Mastermind();
+        private UserService userIO = new UserService();
+        private Roster playerRoster = new Roster();
+        private Player player1 = new Player("Player 1");
+        private Player player2 = new Player("Player 2");
+        
+         //Constructor to set-up players for game
         public Director()
         {
-            //Initial set-up for game
-            Board b = new Board();
-            UserService userIO = new UserService();
-            Player player1 = new Player(userIO.GetStringInput("Enter a name for player 1: "));
-            Player player2 = new Player(userIO.GetStringInput("Enter a name for player 2: "));
-            Roster roster = new Roster();
-            roster.AddPlayer(player1);
-            roster.AddPlayer(player2);
-            Mastermind codeMaster = new Mastermind();
+            player1.SetName(userIO.GetStringInput("Enter a name for player 1: "));
+            player2.SetName(userIO.GetStringInput("Enter a name for player 2: "));
+            playerRoster.AddPlayer(player1);
+            playerRoster.AddPlayer(player2);
         }
         public void StartGame()
         {
@@ -34,7 +38,7 @@ namespace _06_mastermind
         }
         public void DoUpdates()
         {
-            roster.AdvanceNextPlayer();
+            playerRoster.AdvanceNextPlayer();
         }
         public void DoOutputs()
         {
