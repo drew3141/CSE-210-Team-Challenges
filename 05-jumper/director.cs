@@ -51,10 +51,7 @@ namespace _05_jumper
         /// </summary>
         public void GetInputs()
         {
-            
             _wordBank.DisplayWord();
-            
-            
         }
 
         /// <summary>
@@ -64,15 +61,28 @@ namespace _05_jumper
         {
             string word = _userService.getUserInput();
             char letter = char.Parse(word);
-            _wordBank.CheckInWord(letter);
             if (!_wordBank.CheckInWord(letter))
             {
                 _jumper.IncrementGuess();
             }
             
             // Keep playing if the hider is not found (the ! symbol means not)
-            _keepPlaying = _jumper.IsAlive();
-
+            if (_jumper.IsAlive()&&!_wordBank.isGameWon())
+            {
+                _keepPlaying= true;
+            }
+            else
+            {
+                if(!_jumper.IsAlive())
+                {
+                    Console.WriteLine($"You lost! The word was: {_wordBank._secretWord}");
+                }
+                else if (_wordBank.isGameWon())
+                {
+                    Console.WriteLine("You won!");
+                }
+                _keepPlaying=false;
+            }
         }
 
         /// <summary>
