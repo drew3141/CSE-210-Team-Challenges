@@ -2,9 +2,14 @@ using System;
 
 namespace _06_mastermind
 {
-    class Mastermind
+    public class Mastermind
     {
-        string guess = "1435";
+        string guess = "1324";
+        public string move()
+        {
+            string test = "hello";
+            return test;
+        }
         public string createCode()
         {
             Random r = new Random();
@@ -44,4 +49,5 @@ namespace _06_mastermind
             return hasWon;
         }
     }
+
 }
