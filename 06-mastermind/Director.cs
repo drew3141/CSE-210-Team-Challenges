@@ -12,7 +12,8 @@ namespace _06_mastermind
         private Roster playerRoster = new Roster();
         private Player player1 = new Player("Player 1");
         private Player player2 = new Player("Player 2");
-        
+        private string guess = "";
+        private string code = "";
 
         public void StartGame()
         {
@@ -20,6 +21,8 @@ namespace _06_mastermind
             player2.SetName(userIO.GetStringInput("Enter a name for player 2: "));
             playerRoster.AddPlayer(player1);
             playerRoster.AddPlayer(player2);
+            code = codeMaster.createCode();
+            DoOutputs();
             while (_keepPlaying)
             {
                 GetInputs();
@@ -30,18 +33,16 @@ namespace _06_mastermind
 
         public void GetInputs()
         {
-
+            guess = userIO.GetStringInput($"{playerRoster.GetCurrentPlayer()}, please enter your guess: ");
         }
         public void DoUpdates()
         {
             playerRoster.AdvanceNextPlayer();
-            //_keepPlaying = !(codeMaster.HasWon());
-            //codeMaster.getHint();
+            _keepPlaying = !(codeMaster.hasWon(code, guess));
         }
         public void DoOutputs()
         {
-            //board.DisplayBoard();
-            //
+            b.DisplayBoard(player1, player2, codeMaster);
         }
     }
 }
