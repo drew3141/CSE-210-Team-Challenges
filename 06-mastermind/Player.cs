@@ -12,6 +12,11 @@ namespace _06_mastermind
             _name = name;
         }
 
+        public void SetName(string name)
+        {
+            _name = name;
+        }
+
         public string GetName()
         {
             return _name;

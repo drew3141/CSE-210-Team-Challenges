@@ -26,6 +26,7 @@ namespace _05_jumper
             Random r = new Random();
             _wordIndex = r.Next(0, _words.Count);
             _secretWord = _words[_wordIndex];
+            Console.WriteLine(_secretWord);
             _displayWord = "";
 
             foreach (char letter in _secretWord)
