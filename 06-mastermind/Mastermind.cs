@@ -14,6 +14,10 @@ namespace _06_mastermind
             previousGuess= guess;
             guess = userInput;
         }
+        public string getGuess()
+        {
+            return guess;
+        }
         public void setCode()
         {
             Random r = new Random();
@@ -23,7 +27,7 @@ namespace _06_mastermind
         public void setHint()
         {
             lastHint = hint;
-            hint = "1234";
+            hint = "****";
         }
         public string getHint()
         {

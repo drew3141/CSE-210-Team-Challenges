@@ -32,10 +32,12 @@ namespace _06_mastermind
         public void GetInputs()
         {
             codeMaster.setGuess(userIO.GetStringInput($"{playerRoster.GetCurrentPlayer()}, please enter your guess: "));
+            
         }
         public void DoUpdates()
         {
             playerRoster.AdvanceNextPlayer();
+            playerRoster.GetCurrentPlayer().SetGuess(codeMaster.getGuess());
             codeMaster.setHint();
             _keepPlaying = !(codeMaster.hasWon());
         }
