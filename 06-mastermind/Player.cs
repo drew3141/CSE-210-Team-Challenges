@@ -4,32 +4,24 @@ namespace _06_mastermind
 {
     class Player
     {
-        private String _name;
-        private Mastermind _move;
-
-        public Player(String name)
-        {
-            _name = name;
-        }
+        private string _name;
+        private string playerGuess = "----";
 
         public void SetName(string name)
         {
             _name = name;
         }
-
         public string GetName()
         {
             return _name;
         }
-
-        public void SetMove(Mastermind move)
+        public void SetGuess(string guess)
         {
-            _move = move;
+            playerGuess = guess;
         }
-
-        public Mastermind GetMove()
+        public string GetPlayerGuess()
         {
-            return _move;
+            return playerGuess;
         }
     }
 }

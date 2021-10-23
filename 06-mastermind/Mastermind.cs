@@ -4,56 +4,51 @@ namespace _06_mastermind
 {
     public class Mastermind
     {
-        private string code;
-        private string guess;
+        private string code = "";
+        private string guess = "----";
+        private string previousGuess = "----";
+        private string hint = "----";
+        private string lastHint = "----";
 
-        public string setGuess(){
-            UserService r = new UserService();
-            string guess = r.GetStringInput("l");
-            return guess;
+        public void setGuess(string userInput){
+            previousGuess= guess;
+            guess = userInput;
         }
-        public string move()
-        {
-            string test = "hello";
-            return test;
-        }
-        public string createCode()
+        public void setCode()
         {
             Random r = new Random();
             int number = r.Next(1000, 9999);
             code = number.ToString();
-            return code;
         }
-        public string[] getHint()
+        public void setHint()
         {
-            var hint = new string[] {"P","P","P","P" };
-            string[] guess_list = guess.Split();
-            string[] code_list = code.Split();
-            if(guess_list[0] == code_list[0]){
-                hint[0] = "X";
-            }
-            else if(guess_list[1] == code_list[1]){
-                hint[1] = "X";
-            }
-            else if(guess_list[2] == code_list[2]){
-                hint[2] = "X";
-            }
-            else if(guess_list[3] == code_list[3]){
-                hint[3] = "X";
-            }
+            lastHint = hint;
+            hint = "1234";
+        }
+        public string getHint()
+        {
             return hint;
-
+        }
+        public string getLastHint()
+        {
+            return lastHint;
         }
         public bool hasWon()
         {
-            bool hasWon = false;
             if(code == guess){
-                hasWon = true;
+                return true;
             }
             else{
-                hasWon = false;
+                return false;
             }
-            return hasWon;
+        }
+        public void displayGuess()
+        {
+            Console.Write($"{guess}, {hint}");
+        }
+        public void displayPreviousGuess()
+        {
+            Console.Write($"{previousGuess}, {hint}");
         }
     }
 
