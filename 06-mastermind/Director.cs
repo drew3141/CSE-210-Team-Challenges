@@ -12,8 +12,8 @@ namespace _06_mastermind
         private Roster playerRoster = new Roster();
         private Player player1 = new Player("Player 1");
         private Player player2 = new Player("Player 2");
-        private string guess = "";
-        private string code = "";
+        private string guess = "1234";
+        private string code = "1334";
 
         public void StartGame()
         {
@@ -38,7 +38,7 @@ namespace _06_mastermind
         public void DoUpdates()
         {
             playerRoster.AdvanceNextPlayer();
-            _keepPlaying = !(codeMaster.hasWon(code, guess));
+            _keepPlaying = !(codeMaster.hasWon());
         }
         public void DoOutputs()
         {

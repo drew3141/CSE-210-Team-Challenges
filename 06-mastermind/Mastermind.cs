@@ -4,7 +4,14 @@ namespace _06_mastermind
 {
     public class Mastermind
     {
-        string guess = "1324";
+        private string code;
+        private string guess;
+
+        public string setGuess(){
+            UserService r = new UserService();
+            string guess = r.GetStringInput("l");
+            return guess;
+        }
         public string move()
         {
             string test = "hello";
@@ -14,7 +21,7 @@ namespace _06_mastermind
         {
             Random r = new Random();
             int number = r.Next(1000, 9999);
-            string code = number.ToString();
+            code = number.ToString();
             return code;
         }
         public string[] getHint(string code, string guess)
@@ -37,7 +44,7 @@ namespace _06_mastermind
             return hint;
 
         }
-        public bool hasWon(string code, string guess)
+        public bool hasWon()
         {
             bool hasWon = false;
             if(code == guess){
