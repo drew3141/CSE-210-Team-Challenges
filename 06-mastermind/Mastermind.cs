@@ -24,7 +24,7 @@ namespace _06_mastermind
             code = number.ToString();
             return code;
         }
-        public string[] getHint(string code, string guess)
+        public string[] getHint()
         {
             var hint = new string[] {"P","P","P","P" };
             string[] guess_list = guess.Split();
