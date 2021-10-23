@@ -31,19 +31,18 @@ namespace _06_mastermind
 
         public void GetInputs()
         {
-            codeMaster.setGuess(userIO.GetStringInput($"{playerRoster.GetCurrentPlayer()}, please enter your guess: "));
-            
+            codeMaster.setGuess(userIO.GetStringInput($"{playerRoster.GetCurrentPlayer().GetName()}, please enter your guess: "));
         }
         public void DoUpdates()
         {
-            playerRoster.AdvanceNextPlayer();
             playerRoster.GetCurrentPlayer().SetGuess(codeMaster.getGuess());
             codeMaster.setHint();
             _keepPlaying = !(codeMaster.hasWon());
+            playerRoster.AdvanceNextPlayer();
         }
         public void DoOutputs()
         {
-            if (playerRoster.GetCurrentPlayer() == player1)
+            if (playerRoster.GetCurrentPlayer() == player2)
             {
                 b.displayBoard(player1, player2, codeMaster);
             }
