@@ -27,6 +27,7 @@ namespace _06_mastermind
                 DoUpdates();
                 DoOutputs();
             }
+            Console.WriteLine($"{playerRoster.GetCurrentPlayer().GetName()} wins!");
         }
 
         public void GetInputs()
