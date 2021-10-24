@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace _06_mastermind
 {
@@ -45,6 +46,22 @@ namespace _06_mastermind
             if(guessArray[3] == codeArray[3])
             {
                 hintList[3] = 'X';
+            }
+            if(codeArray.Contains(guessArray[0]))
+            {
+                hintList[0] = 'O';
+            }
+            if(codeArray.Contains(guessArray[1]))
+            {
+                hintList[1] = 'O';
+            }
+            if(codeArray.Contains(guessArray[2]))
+            {
+                hintList[2] = 'O';
+            }
+            if(codeArray.Contains(guessArray[3]))
+            {
+                hintList[3] = 'O';
             }
             else{
                 Console.WriteLine(code);
