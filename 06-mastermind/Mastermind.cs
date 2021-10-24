@@ -35,31 +35,31 @@ namespace _06_mastermind
             {
                 hintList[0] = 'X';
             }
+            else if(codeArray.Contains(guessArray[0]))
+            {
+                hintList[0] = 'O';
+            }
             if(guessArray[1] == codeArray[1])
             {
                 hintList[1] = 'X';
+            }
+            else if(codeArray.Contains(guessArray[1]))
+            {
+                hintList[1] = 'O';
             }
             if(guessArray[2] == codeArray[2])
             {
                 hintList[2] = 'X';
             }
+            else if(codeArray.Contains(guessArray[2]))
+            {
+                hintList[2] = 'O';
+            }
             if(guessArray[3] == codeArray[3])
             {
                 hintList[3] = 'X';
             }
-            if(codeArray.Contains(guessArray[0]))
-            {
-                hintList[0] = 'O';
-            }
-            if(codeArray.Contains(guessArray[1]))
-            {
-                hintList[1] = 'O';
-            }
-            if(codeArray.Contains(guessArray[2]))
-            {
-                hintList[2] = 'O';
-            }
-            if(codeArray.Contains(guessArray[3]))
+            else if(codeArray.Contains(guessArray[3]))
             {
                 hintList[3] = 'O';
             }
