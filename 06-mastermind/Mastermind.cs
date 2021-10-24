@@ -34,17 +34,21 @@ namespace _06_mastermind
             {
                 hintList[0] = 'X';
             }
-            else if(guessArray[1] == codeArray[1])
+            if(guessArray[1] == codeArray[1])
             {
                 hintList[1] = 'X';
             }
-            else if(guessArray[2] == codeArray[2])
+            if(guessArray[2] == codeArray[2])
             {
                 hintList[2] = 'X';
             }
-            else if(guessArray[3] == codeArray[3])
+            if(guessArray[3] == codeArray[3])
             {
                 hintList[3] = 'X';
+            }
+            else
+            {
+                Console.WriteLine(code);
             }
             // else if(guessArray.contains())
             // else{
