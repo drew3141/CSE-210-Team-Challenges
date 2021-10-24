@@ -46,8 +46,7 @@ namespace _06_mastermind
             {
                 hintList[3] = 'X';
             }
-            else
-            {
+            else{
                 Console.WriteLine(code);
             }
             // else if(guessArray.contains())
