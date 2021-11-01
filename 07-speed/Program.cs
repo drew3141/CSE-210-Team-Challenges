@@ -4,9 +4,10 @@ namespace _07_speed
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            Director guyInCharge = new Director();
+            guyInCharge.StartGame();
         }
     }
 }
