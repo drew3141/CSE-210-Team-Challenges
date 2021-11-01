@@ -1,0 +1,2 @@
+//getCurrentWord
+//Do math here
