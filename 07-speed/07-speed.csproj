@@ -6,4 +6,8 @@
     <RootNamespace>_07_speed</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="raylib-cs" Version="3.7.0.1" />
+  </ItemGroup>
+
 </Project>

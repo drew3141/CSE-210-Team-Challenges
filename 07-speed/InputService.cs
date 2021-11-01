@@ -30,7 +30,7 @@ namespace _07_snake
         {
             return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_DOWN);
         }
-        
+
         /// <summary>
         /// Returns true if the user has attempted to close the window.
         /// </summary>
