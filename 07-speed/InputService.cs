@@ -1,7 +1,7 @@
 using System;
 using Raylib_cs;
 
-namespace _07_snake
+namespace _07_speed
 {
     /// <summary>
     /// Handles all the interaction with the user input library.

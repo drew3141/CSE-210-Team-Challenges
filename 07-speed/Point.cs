@@ -1,6 +1,6 @@
 using System;
 
-namespace _07_snake
+namespace _07_speed
 {
     /// <summary>
     /// Represents an X, Y pair.
