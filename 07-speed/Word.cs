@@ -7,12 +7,12 @@ namespace _07_speed
 {
     public class Word
     {
-        protected AddWordList()
+        protected void AddWordList()
         {
-            List <string> wordList = new List<string>()
-                wordList.Add("Hello");
-                wordList.Add("Goodbye");
-                wordList.Add("");
+            List <string> wordList = new List<string>();
+            wordList.Add("Hello");
+            wordList.Add("Goodbye");
+            wordList.Add("");
         }
         
     }
