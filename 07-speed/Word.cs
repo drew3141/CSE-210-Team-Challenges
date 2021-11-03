@@ -1,7 +1,15 @@
 // wordbank, Logic
 // while loop?? Iterate through a list of currentwords
+using System;
+using System.Collections.Generic;
 
-List <string> wordList = new List<string>()
+namespace _07_speed
 {
-    "Hello", "Goodbye", ""
+    public class Word
+    {
+        List <string> wordList = new List<string>()
+            {
+                "Hello", "Goodbye", ""
+            }
+    }
 }

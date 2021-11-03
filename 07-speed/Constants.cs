@@ -1,6 +1,6 @@
 using System;
 
-namespace _07_snake
+namespace _07_speed
 {
     /// <summary>
     /// This is a set of program wide constants to be used in other classes.
