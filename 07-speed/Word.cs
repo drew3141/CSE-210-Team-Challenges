@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 namespace _07_speed
 {
-    public class Word
+    public class WordBank
     {
-        protected List<string> _words = new List<string>();
-        protected string _word = "";
-        protected int _wordIndex = -1;
+        private List<string> _wordBank = new List<string>();
+        private string _word = "";
+        private int _wordIndex = -1;
 
-        protected Word()
+        protected WordBank()
         {
             ReadWordList();
         }
@@ -19,15 +19,15 @@ namespace _07_speed
         protected void ReadWordList()
         {
             String[] fileWords = System.IO.File.ReadAllLines(@"Words.txt");
-            _words.AddRange(fileWords);
+            _wordBank.AddRange(fileWords);
         }
 
         protected string SelectRandomWord()
         {
             Random r = new Random();
-            _wordIndex = r.Next(0, _words.Count);
-            _word = _words[_wordIndex];
-            Console.WriteLine(_word);
+            _wordIndex = r.Next(0, _wordBank.Count);
+            _word = _wordBank[_wordIndex];
+            _wordBank.RemoveAt(_wordIndex);
 
             return _word;
         }
