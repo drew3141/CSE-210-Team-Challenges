@@ -2,7 +2,7 @@ using System;
 
 namespace _07_speed
 {
-    class Director
+    public class Director
     {
         OutputService _outputService = new OutputService();
         private bool _keepPlaying = true;
@@ -19,7 +19,7 @@ namespace _07_speed
 
         public void Setup()
         {
-             _outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Hello", Constants.FRAME_RATE);
+             _outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Speed Game", Constants.FRAME_RATE);
         }
 
         public void GetInputs()

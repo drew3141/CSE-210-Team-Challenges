@@ -12,23 +12,10 @@ namespace _07_speed
         {
 
         }
-
-        public bool IsLeftPressed()
+        public int GetInput()
         {
-            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_LEFT);
-        }
-
-        public bool IsRightPressed()
-        {
-            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_RIGHT);
-        }
-        public bool IsUpPressed()
-        {
-            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_UP);
-        }
-        public bool IsDownPressed()
-        {
-            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_DOWN);
+            int keyInput = Raylib.GetKeyPressed();
+            return keyInput;
         }
 
         /// <summary>
