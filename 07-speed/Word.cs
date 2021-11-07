@@ -8,11 +8,10 @@ namespace _07_speed
     public class Word : Actor
     {
         Random r = new Random();
-        
+        WordBank _words = new WordBank();
         public Word()
         {
-            WordBank _words = new WordBank();
-            int y = r.Next(0,Constants.MAX_Y-20);
+            int y = r.Next(0,Constants.MAX_Y-40);
             int x = r.Next(0,Constants.MAX_X-10);
             _position = new Point(x,y);
             _velocity = new Point(-1,0);
@@ -25,13 +24,17 @@ namespace _07_speed
         }
         public void MoveWord()
         {
-            WordBank _words = new WordBank();
             MoveNext();
             if (_position.GetX() <= (_text.Length*-10))
             {
-                _position = new Point(Constants.MAX_X, r.Next(0, Constants.MAX_Y));
-                SetNewWord(_words.SelectRandomWord());                
+                ResetWord();    
             }
+        }
+
+        public void ResetWord()
+        {
+            _position = new Point(Constants.MAX_X, r.Next(0, Constants.MAX_Y-40));
+            SetNewWord(_words.SelectRandomWord());   
         }
         
     }
