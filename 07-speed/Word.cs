@@ -5,14 +5,33 @@ using System.Collections.Generic;
 
 namespace _07_speed
 {
-    public class Word
+    public class Word : Actor
     {
-        protected void AddWordList()
+        Random r = new Random();
+        
+        public Word()
         {
-            List <string> wordList = new List<string>();
-            wordList.Add("Hello");
-            wordList.Add("Goodbye");
-            wordList.Add("");
+            WordBank _words = new WordBank();
+            int y = r.Next(0,Constants.MAX_Y-20);
+            int x = r.Next(0,Constants.MAX_X-10);
+            _position = new Point(x,y);
+            _velocity = new Point(-1,0);
+            SetNewWord(_words.SelectRandomWord());
+        }       
+        
+        private void SetNewWord(string w)
+        {
+            _text = w;
+        }
+        public void MoveWord()
+        {
+            WordBank _words = new WordBank();
+            MoveNext();
+            if (_position.GetX() <= (_text.Length*-10))
+            {
+                _position = new Point(Constants.MAX_X, r.Next(0, Constants.MAX_Y));
+                SetNewWord(_words.SelectRandomWord());                
+            }
         }
         
     }
