@@ -36,13 +36,13 @@ namespace _07_speed
 
         public void DoUpdates()
         {
-
+            _words.MoveWord();
         }
 
         public void DoOutputs()
         {
             _outputService.StartDrawing();
-            _outputService.DrawText(Constants.MAX_X/2,Constants.MAX_Y/2,_words.GetWord(), true);
+            _outputService.DrawText(_words.x,_words.y,_words.GetWord(), true);
             _outputService.EndDrawing();
         }
     }
