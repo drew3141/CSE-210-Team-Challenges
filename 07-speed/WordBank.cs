@@ -11,7 +11,7 @@ namespace _07_speed
         private string _word = "";
         private int _wordIndex = -1;
 
-        protected WordBank()
+        public WordBank()
         {
             ReadWordList();
         }
@@ -22,13 +22,16 @@ namespace _07_speed
             _wordBank.AddRange(fileWords);
         }
 
-        protected string SelectRandomWord()
+        public void SelectRandomWord()
         {
             Random r = new Random();
             _wordIndex = r.Next(0, _wordBank.Count);
             _word = _wordBank[_wordIndex];
             _wordBank.RemoveAt(_wordIndex);
+        }
 
+        public string GetWord()
+        {
             return _word;
         }
          
