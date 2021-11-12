@@ -32,8 +32,8 @@ namespace cse210_batter_csharp
 
             // The paddle
             cast["paddle"] = new List<Actor>();
-
-            // TODO: Add your paddle here
+            Paddle paddle = new Paddle();
+            cast["paddle"].Add(paddle);
 
             // Create the script
             Dictionary<string, List<Action>> script = new Dictionary<string, List<Action>>();
@@ -53,6 +53,8 @@ namespace cse210_batter_csharp
             script["update"].Add(moveActorsAction);
             HandleCollisionsAction handleCollisionsAction = new HandleCollisionsAction(new PhysicsService());
             script["update"].Add(handleCollisionsAction);
+            ControlActorsAction controlActorsAction = new ControlActorsAction();
+            script["input"].Add(controlActorsAction);
 
 
             // TODO: Add additional actions here to handle the input, move the actors, handle collisions, etc.
