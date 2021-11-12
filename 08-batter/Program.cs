@@ -51,6 +51,9 @@ namespace cse210_batter_csharp
             script["output"].Add(drawActorsAction);
             MoveActorsAction moveActorsAction = new MoveActorsAction();
             script["update"].Add(moveActorsAction);
+            HandleCollisionsAction handleCollisionsAction = new HandleCollisionsAction(new PhysicsService());
+            script["update"].Add(handleCollisionsAction);
+
 
             // TODO: Add additional actions here to handle the input, move the actors, handle collisions, etc.
 
