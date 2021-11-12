@@ -36,7 +36,7 @@ namespace cse210_batter_csharp
                 CueAction("update");
                 CueAction("output");
 
-                if (Raylib_cs.Raylib.WindowShouldClose())
+                if (Raylib_cs.Raylib.WindowShouldClose() | _cast["balls"][0].GetY() > Constants.MAX_Y)
                 {
                     _keepPlaying = false;
                 }

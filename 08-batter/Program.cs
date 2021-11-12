@@ -53,7 +53,7 @@ namespace cse210_batter_csharp
             script["update"].Add(moveActorsAction);
             HandleCollisionsAction handleCollisionsAction = new HandleCollisionsAction(new PhysicsService());
             script["update"].Add(handleCollisionsAction);
-            ControlActorsAction controlActorsAction = new ControlActorsAction();
+            ControlActorsAction controlActorsAction = new ControlActorsAction(new InputService());
             script["input"].Add(controlActorsAction);
 
 
