@@ -12,14 +12,13 @@ namespace cse210_batter_csharp
         {
             // Create the cast
             Dictionary<string, List<Actor>> cast = new Dictionary<string, List<Actor>>();
-
             // Bricks
             cast["bricks"] = new List<Actor>();
-            for (int j = 0; j < 7; j++)
+            for (int j = 7; j >= 1; j--)
             {
                 for (int i = 0; i < 15; i++)
                 {
-                    Brick brick = new Brick(Constants.BRICK_SPACE+i*(Constants.BRICK_WIDTH+Constants.BRICK_SPACE), (Constants.BRICK_SPACE*(j+1))+(Constants.BRICK_HEIGHT*j), j);
+                    Brick brick = new Brick(Constants.BRICK_SPACE+i*(Constants.BRICK_WIDTH+Constants.BRICK_SPACE), (Constants.BRICK_SPACE*(j))+(Constants.BRICK_HEIGHT*(j-1)), j);
                     cast["bricks"].Add(brick);
                 }
             }

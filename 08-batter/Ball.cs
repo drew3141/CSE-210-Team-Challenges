@@ -14,5 +14,17 @@ namespace cse210_batter_csharp.Casting
             SetHeight(Constants.BALL_HEIGHT);
             SetImage(Constants.IMAGE_BALL);
         }
+
+        public void flipHorizontal()
+        {
+            Point flippedVertical = new Point(GetVelocity().GetX()*-1, GetVelocity().GetY());
+            SetVelocity(flippedVertical);
+        }
+        
+        public void flipVertical()
+        {
+            Point flippedVertical = new Point(GetVelocity().GetX(), GetVelocity().GetY()*-1);
+            SetVelocity(flippedVertical);
+        }
     }
 }

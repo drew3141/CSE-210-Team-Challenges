@@ -16,7 +16,7 @@ namespace cse210_batter_csharp.Scripting
 
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
-            Actor ball = cast["balls"][0];
+            Ball ball = (Ball)cast["balls"][0];
             List<Actor> toRemove = new List<Actor>();
             foreach (List<Actor> group in cast.Values)
             {
@@ -25,13 +25,12 @@ namespace cse210_batter_csharp.Scripting
                    if (_physicsService.IsCollision(actor, ball) && actor != ball)
                    {
                         _audioService.PlaySound(Constants.SOUND_BOUNCE);
-                        Point flippedVertical = new Point(ball.GetVelocity().GetX(), ball.GetVelocity().GetY()*-1);
-                        ball.SetVelocity(flippedVertical);
+                        ball.flipVertical();
                         if (group == cast["bricks"])
                         {
-                            //ReduceTier of brick and check isAlive 
-                            bool aliveCondition = true;
-                            if (aliveCondition)
+                            Brick b = (Brick)actor;
+                            b.ReduceTier();
+                            if (!b.IsAlive())
                             {
                                 toRemove.Add(actor);
                             }
@@ -46,8 +45,7 @@ namespace cse210_batter_csharp.Scripting
             if (ball.GetPosition().GetX() > Constants.MAX_X-ball.GetWidth() | ball.GetPosition().GetX() < ball.GetWidth())   
             {
                 _audioService.PlaySound(Constants.SOUND_BOUNCE);
-                Point newV = new Point(ball.GetVelocity().GetX()*-1, ball.GetVelocity().GetY());
-                ball.SetVelocity(newV);
+                ball.flipHorizontal();
             }
         }
 

@@ -16,6 +16,7 @@ namespace cse210_batter_csharp.Casting
         protected string _text = "";
         private string _image = "";
 
+
         public Actor()
         {
             // Start these at 0, 0 by default
@@ -23,6 +24,7 @@ namespace cse210_batter_csharp.Casting
             _velocity = new Point(0, 0);
         }
 
+        
 
         public void SetImage(string image)
         {
