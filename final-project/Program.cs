@@ -41,7 +41,6 @@ namespace Final_Project
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "The Box", Constants.FRAME_RATE);
             audioService.StartAudio();
-            audioService.PlaySound(Constants.SOUND_START);
 
             Director theDirector = new Director(cast, script);
             theDirector.Direct();
