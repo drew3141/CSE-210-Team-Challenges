@@ -4,7 +4,7 @@ using Final_Project.Casting;
 using Final_Project.Services;
 using Final_Project.Scripting;
 
-namespace Final_Project
+namespace Final_Project.GameFlow
 {
     /// <summary>
     /// The director is responsible to direct the game, including to keep track of all
