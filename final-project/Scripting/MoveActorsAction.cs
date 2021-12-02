@@ -11,6 +11,7 @@ namespace Final_Project.Scripting
             {
                foreach (Actor actor in group)
                {
+                   
                    int newX = actor.GetPosition().GetX()+actor.GetVelocity().GetX();
                    int newY = actor.GetPosition().GetY()+actor.GetVelocity().GetY();
                    Point newPosition = new Point(newX, newY);

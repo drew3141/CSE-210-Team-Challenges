@@ -15,8 +15,19 @@ namespace Final_Project.Scripting
         
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
+            Player p = (Player)cast["player"][0];
             Point direction = _inputService.GetDirection();
-            direction = new Point(direction.GetX()*7,direction.GetY()*7);
+            if (p.GetPosition().GetY() < Constants.MAX_Y-(Constants.PLAYER_HEIGHT+Constants.TERRAIN_HEIGHT))
+            {
+                p.SetVelocity(new Point(p.GetVelocity().GetX(),p.GetVelocity().GetY()+1));
+            }
+            if (_inputService.IsUpPressed() && p.CanJump)
+            {
+                p.Jump();
+            }
+            direction = new Point(direction.GetX()*8,p.GetVelocity().GetY());
+            p.SetVelocity(direction);
+            
         }
     }
 }

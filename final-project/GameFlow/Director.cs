@@ -35,7 +35,6 @@ namespace Final_Project.GameFlow
                 CueAction("input");
                 CueAction("update");
                 CueAction("output");
-
                 if (Raylib_cs.Raylib.WindowShouldClose())
                 {
                     _keepPlaying = false;
