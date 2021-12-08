@@ -25,7 +25,7 @@ namespace Final_Project.Scripting
             {
                 p.Jump();
             }
-            direction = new Point(direction.GetX()*8,p.GetVelocity().GetY());
+            direction = new Point(direction.GetX()*6,p.GetVelocity().GetY());
             p.SetVelocity(direction);
             
         }
