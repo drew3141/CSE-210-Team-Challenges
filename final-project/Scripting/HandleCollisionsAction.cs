@@ -21,36 +21,30 @@ namespace Final_Project.Scripting
             {
                foreach (Actor actor in group)
                {
-                   if (_physicsService.IsCollision(actor, p) && actor != p)
+                   if (_physicsService.WillCollide(actor, p) && actor != p)
                    {
-                       //Horizontal collisions
-                    //    if (p.GetLeftEdge() <= actor.GetRightEdge() | p.GetRightEdge() >= actor.GetLeftEdge())
-                    //    {
-                    //        p.SetVelocity(new Point(0,p.GetVelocity().GetY()));
-                    //        if (p.GetLeftEdge() <= actor.GetRightEdge())
-                    //        {
-                    //            p.SetPosition(new Point(actor.GetPosition().GetX()+actor.GetWidth(),p.GetPosition().GetY()));
-                    //        }
-                    //        else if (p.GetRightEdge() >= actor.GetLeftEdge())
-                    //        {
-                    //            p.SetPosition(new Point(actor.GetPosition().GetX(),p.GetPosition().GetY()));
-                    //        }
-                    //    }
-                       //Vertical collisions
-                       if (p.GetTopEdge() <= actor.GetBottomEdge() | p.GetBottomEdge() >= actor.GetTopEdge())
-                       {
+                        if (p.GetTopEdge()+p.GetVelocity().GetY() < actor.GetBottomEdge())
+                        {
                             p.SetVelocity(new Point(p.GetVelocity().GetX(),0));
-                            if (p.GetTopEdge() <= actor.GetBottomEdge())
-                            {
-                                p.SetPosition(new Point(p.GetPosition().GetX(), actor.GetPosition().GetY()+actor.GetHeight()));
-                            }
-                            if (p.GetBottomEdge()>= actor.GetTopEdge())
-                            {
-                                p.CanJump = true;
-                                p.SetPosition(new Point(p.GetPosition().GetX(), actor.GetPosition().GetY()-p.GetHeight()));
-                            }
+                            p.SetPosition(new Point(p.GetLeftEdge(), actor.GetBottomEdge()));
                         }
-                   }
+                        else if (p.GetBottomEdge()+p.GetVelocity().GetY() > actor.GetTopEdge())
+                        {
+                            p.CanJump = true;
+                            p.SetVelocity(new Point(p.GetVelocity().GetX(),0));
+                            p.SetPosition(new Point(p.GetLeftEdge(), actor.GetTopEdge()-p.GetHeight()));
+                        }
+                        // else if (p.GetLeftEdge() < actor.GetRightEdge())
+                        // {
+                        //    p.SetVelocity(new Point(0,p.GetVelocity().GetY()));
+                        //    p.SetPosition(new Point(actor.GetPosition().GetX()+actor.GetWidth(),p.GetPosition().GetY()));
+                        // }
+                        // else if (p.GetRightEdge() > actor.GetLeftEdge())
+                        // {
+                        //    p.SetVelocity(new Point(0,p.GetVelocity().GetY()));
+                        //    p.SetPosition(new Point(actor.GetPosition().GetX(),p.GetPosition().GetY()));
+                        // }
+                    }
                }
             }
         }

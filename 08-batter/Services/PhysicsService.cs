@@ -41,6 +41,27 @@ namespace cse210_batter_csharp.Services
 
             return Raylib.CheckCollisionRecs(rectangle1, rectangle2);
         }
+        
+        public bool WillCollide(Actor first, Actor second)
+        {
+            int x1 = first.GetX()+first.GetVelocity().GetX();
+            int y1 = first.GetY()+first.GetVelocity().GetY();
+            int width1 = first.GetWidth();
+            int height1 = first.GetHeight();
+
+            Raylib_cs.Rectangle rectangle1
+                = new Raylib_cs.Rectangle(x1, y1, width1, height1);
+
+            int x2 = second.GetX()+second.GetVelocity().GetX();
+            int y2 = second.GetY()+second.GetVelocity().GetY();
+            int width2 = second.GetWidth();
+            int height2 = second.GetHeight();
+
+            Raylib_cs.Rectangle rectangle2
+                = new Raylib_cs.Rectangle(x2, y2, width2, height2);
+
+            return Raylib.CheckCollisionRecs(rectangle1, rectangle2);
+        }
     }
 
 }
