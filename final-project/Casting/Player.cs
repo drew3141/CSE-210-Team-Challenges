@@ -10,7 +10,7 @@ namespace Final_Project.Casting
         public Player()
         {
             SetImage("./Assets/Stone40x40.png");
-            SetPosition(new Point(Constants.MAX_X/2,Constants.MAX_Y-Constants.TERRAIN_HEIGHT-Constants.PLAYER_HEIGHT-40));
+            SetPosition(new Point(Constants.MAX_X/2,Constants.MAX_Y-Constants.TERRAIN_HEIGHT-Constants.PLAYER_HEIGHT-600));
             SetWidth(Constants.PLAYER_WIDTH);
             SetHeight(Constants.PLAYER_HEIGHT);
         }

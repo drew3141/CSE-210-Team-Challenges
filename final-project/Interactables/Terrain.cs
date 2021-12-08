@@ -7,7 +7,7 @@ namespace Final_Project.Interactables
     {
         public Terrain(int xPosition, int yPosition, int width, int height)
         {
-            
+            SetImage("./Assets/Stone40x40.png");
             SetPosition(new Point(xPosition,yPosition));
             SetHeight(height);
             SetWidth(width);

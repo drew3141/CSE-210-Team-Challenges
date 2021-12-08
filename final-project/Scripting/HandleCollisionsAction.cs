@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Final_Project.Casting;
 using Final_Project.Services;
+using System;
 
 namespace Final_Project.Scripting
 {
@@ -21,29 +22,43 @@ namespace Final_Project.Scripting
             {
                foreach (Actor actor in group)
                {
-                   if (_physicsService.WillCollide(actor, p) && actor != p)
+                   if (_physicsService.IsCollision(actor, p) && actor != p && group == cast["terrain"])
                    {
-                        if (p.GetTopEdge()+p.GetVelocity().GetY() < actor.GetBottomEdge())
+                        Point overlap = _physicsService.GetCollisionOverlap(actor, p);
+                        if (Math.Abs(overlap.GetX()) < Math.Abs(overlap.GetY()))
                         {
-                            p.SetVelocity(new Point(p.GetVelocity().GetX(),0));
-                            p.SetPosition(new Point(p.GetLeftEdge(), actor.GetBottomEdge()));
+                            // Depth was least along the x-axis, so that's our point of collision
+                            if (overlap.GetX() > 0)
+                            {
+                                // Collision on the left
+                                p.SetVelocity(new Point(0, p.GetVelocity().GetY()));
+                                p.SetLeftEdge(actor.GetRightEdge());
+                            }
+                            else
+                            {
+                                // Collision on the right
+                                p.SetVelocity(new Point(0, p.GetVelocity().GetY()));
+                                p.SetRightEdge(actor.GetLeftEdge());
+                            }
                         }
-                        else if (p.GetBottomEdge()+p.GetVelocity().GetY() > actor.GetTopEdge())
+                        else
                         {
-                            p.CanJump = true;
-                            p.SetVelocity(new Point(p.GetVelocity().GetX(),0));
-                            p.SetPosition(new Point(p.GetLeftEdge(), actor.GetTopEdge()-p.GetHeight()));
+                            // Collision on the y-axis
+                            if (overlap.GetY() > 0)
+                            {
+                                // Collision on the top
+                                p.SetVelocity(new Point(p.GetVelocity().GetX(), 0));
+                                p.SetTopEdge(actor.GetBottomEdge());
+                            }
+                            else
+                            {
+                                // Collision on the bottom
+                                p.SetVelocity(new Point(p.GetVelocity().GetX(), 0));
+                                p.SetBottomEdge(actor.GetTopEdge());
+                                p.CanJump = true;
+                            }
                         }
-                        // else if (p.GetLeftEdge() < actor.GetRightEdge())
-                        // {
-                        //    p.SetVelocity(new Point(0,p.GetVelocity().GetY()));
-                        //    p.SetPosition(new Point(actor.GetPosition().GetX()+actor.GetWidth(),p.GetPosition().GetY()));
-                        // }
-                        // else if (p.GetRightEdge() > actor.GetLeftEdge())
-                        // {
-                        //    p.SetVelocity(new Point(0,p.GetVelocity().GetY()));
-                        //    p.SetPosition(new Point(actor.GetPosition().GetX(),p.GetPosition().GetY()));
-                        // }
+                        
                     }
                }
             }

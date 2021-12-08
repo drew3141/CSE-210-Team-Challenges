@@ -121,6 +121,26 @@ namespace Final_Project.Casting
             _position = position;
         }
 
+        public void SetTopEdge(int position)
+        {
+            SetPosition(new Point(GetPosition().GetX(),position));
+        }
+
+        public void SetBottomEdge(int position)
+        {
+            SetPosition(new Point(GetPosition().GetX(),position-_height));
+        }
+
+        public void SetRightEdge(int position)
+        {
+            SetPosition(new Point(position-_width, GetPosition().GetY()));
+        }
+
+        public void SetLeftEdge(int position)
+        {
+            SetPosition(new Point(position, GetPosition().GetY()));
+        }
+
         public Point GetVelocity()
         {
             return _velocity;

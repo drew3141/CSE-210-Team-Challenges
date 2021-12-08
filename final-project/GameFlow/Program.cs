@@ -17,7 +17,7 @@ namespace Final_Project.GameFlow
             cast["terrain"] = new List<Actor>();
             Terrain leftWall = new Terrain(0,0,40,Constants.MAX_Y);
             Terrain rightWall = new Terrain(Constants.MAX_X-40,0,40,Constants.MAX_Y);
-            Terrain floor = new Terrain(0,Constants.MAX_Y-80,Constants.MAX_X,40);
+            Terrain floor = new Terrain(0,Constants.MAX_Y-40,Constants.MAX_X,40);
             cast["terrain"].Add(leftWall);
             cast["terrain"].Add(rightWall);
             cast["terrain"].Add(floor);
