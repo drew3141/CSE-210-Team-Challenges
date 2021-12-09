@@ -18,6 +18,9 @@ namespace Final_Project
         public const int TERRAIN_WIDTH = 40;
         public const int TERRAIN_HEIGHT = 40;
 
+        public const int DOOR_HEIGHT = 80;
+        public const int DOOR_WIDTH = 40;
+
         public const int PLAYER_HEIGHT = 40;
         public const int PLAYER_WIDTH = 40;
     }

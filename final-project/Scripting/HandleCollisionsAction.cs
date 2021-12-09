@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Final_Project.Casting;
 using Final_Project.Services;
+using Final_Project.Interactables;
 using System;
 
 namespace Final_Project.Scripting
@@ -18,11 +19,12 @@ namespace Final_Project.Scripting
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
             Player p = (Player)cast["player"][0];
+            Door d = (Door)cast["room"][0];
             foreach (List<Actor> group in cast.Values)
             {
                foreach (Actor actor in group)
                {
-                   if (_physicsService.IsCollision(actor, p) && actor != p && group == cast["terrain"])
+                   if (_physicsService.IsCollision(actor, p) && actor != p && actor != d && group == cast["room"])
                    {
                         Point overlap = _physicsService.GetCollisionOverlap(actor, p);
                         if (Math.Abs(overlap.GetX()) < Math.Abs(overlap.GetY()))

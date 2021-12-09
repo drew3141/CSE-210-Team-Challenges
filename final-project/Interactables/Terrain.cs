@@ -5,12 +5,12 @@ namespace Final_Project.Interactables
 {
     public class Terrain : Actor
     {
-        public Terrain(int xPosition, int yPosition, int width, int height)
+        public Terrain(int xPosition, int yPosition)
         {
-            
+            SetImage("./Assets/Stone40x40.png");
             SetPosition(new Point(xPosition,yPosition));
-            SetHeight(height);
-            SetWidth(width);
+            SetHeight(Constants.TERRAIN_HEIGHT);
+            SetWidth(Constants.TERRAIN_WIDTH);
         }
     }
 }

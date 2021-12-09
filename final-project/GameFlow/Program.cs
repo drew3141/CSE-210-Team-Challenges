@@ -13,18 +13,13 @@ namespace Final_Project.GameFlow
         {
             // Create the cast
             Dictionary<string, List<Actor>> cast = new Dictionary<string, List<Actor>>();
+            Room roomObject = new Room();
             // Add each member to the cast
-            cast["terrain"] = new List<Actor>();
-            Terrain leftWall = new Terrain(0,0,40,Constants.MAX_Y);
-            Terrain rightWall = new Terrain(Constants.MAX_X-40,0,40,Constants.MAX_Y);
-            Terrain floor = new Terrain(0,Constants.MAX_Y-40,Constants.MAX_X,40);
-            Terrain platform1 = new Terrain(40,Constants.MAX_Y-160,400,40);
-            Terrain platform2 = new Terrain(400,Constants.MAX_Y-320,400,40);
-            cast["terrain"].Add(leftWall);
-            cast["terrain"].Add(rightWall);
-            cast["terrain"].Add(floor);
-            cast["terrain"].Add(platform1);
-            cast["terrain"].Add(platform2);
+            cast["room"] = new List<Actor>();
+            foreach (Actor terrain in roomObject.rooms["room1"])
+            {
+                cast["room"].Add(terrain);
+            }
             cast["player"] = new List<Actor>();
             Player player = new Player();
             cast["player"].Add(player);
@@ -49,6 +44,8 @@ namespace Final_Project.GameFlow
             script["update"].Add(handleCollisionsAction);
             ControlActorsAction controlActorsAction = new ControlActorsAction(new InputService());
             script["input"].Add(controlActorsAction);
+            ChangeRoomAction changeRoomAction = new ChangeRoomAction(new PhysicsService());
+            script["update"].Add(changeRoomAction);
 
 
             // TODO: Add additional actions here to handle the input, move the actors, handle collisions, etc.
