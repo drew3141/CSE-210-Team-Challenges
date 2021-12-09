@@ -79,6 +79,8 @@ namespace Final_Project.GameFlow
                 Terrain platform4 = new Terrain(Constants.MAX_X-(i*Constants.TERRAIN_WIDTH),Constants.MAX_Y-520);
                 rooms["room2"].Add(platform4);
             }
+            //Create list of actors for room 3
+            
         }
     }
 
