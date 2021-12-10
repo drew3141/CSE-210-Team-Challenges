@@ -17,13 +17,8 @@ namespace Final_Project.Casting
 
         public void Jump()
         {
-            SetVelocity(new Point(GetVelocity().GetX(),-18));
+            SetVelocity(new Point(GetVelocity().GetX(),-18*GravityModifier));
             CanJump = false;
-        }
-
-        public void OpenDoor()
-        {
-            //Have this change the current room to the next room, or tell room to do that or something
         }
     }
 }

@@ -11,19 +11,6 @@ namespace Final_Project.GameFlow
     {
         static void Main(string[] args)
         {
-            // Create the cast
-            Dictionary<string, List<Actor>> cast = new Dictionary<string, List<Actor>>();
-            Room roomObject = new Room();
-            // Add each member to the cast
-            cast["room"] = new List<Actor>();
-            foreach (Actor terrain in roomObject.rooms["room1"])
-            {
-                cast["room"].Add(terrain);
-            }
-            cast["player"] = new List<Actor>();
-            Player player = new Player();
-            cast["player"].Add(player);
-
             // Create the script
             Dictionary<string, List<Action>> script = new Dictionary<string, List<Action>>();
 
@@ -42,10 +29,21 @@ namespace Final_Project.GameFlow
             script["update"].Add(moveActorsAction);
             HandleCollisionsAction handleCollisionsAction = new HandleCollisionsAction(new PhysicsService());
             script["update"].Add(handleCollisionsAction);
-            ControlActorsAction controlActorsAction = new ControlActorsAction(new InputService());
+            ControlActorsAction controlActorsAction = new ControlActorsAction(new InputService(), new PhysicsService());
             script["input"].Add(controlActorsAction);
-            ChangeRoomAction changeRoomAction = new ChangeRoomAction(new PhysicsService());
-            script["update"].Add(changeRoomAction);
+
+            // Create the cast
+            Dictionary<string, List<Actor>> cast = new Dictionary<string, List<Actor>>();
+            Room roomObject = new Room();
+            // Add each member to the cast
+            cast["room"] = new List<Actor>();
+            foreach (Actor terrain in roomObject.rooms[$"room{controlActorsAction.currentRoom}"])
+            {
+                cast["room"].Add(terrain);
+            }
+            cast["player"] = new List<Actor>();
+            Player player = new Player();
+            cast["player"].Add(player);
 
 
             // TODO: Add additional actions here to handle the input, move the actors, handle collisions, etc.

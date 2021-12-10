@@ -20,11 +20,12 @@ namespace Final_Project.Scripting
         {
             Player p = (Player)cast["player"][0];
             Door d = (Door)cast["room"][0];
+            Lever l = (Lever)cast["room"][1];
             foreach (List<Actor> group in cast.Values)
             {
                foreach (Actor actor in group)
                {
-                   if (_physicsService.IsCollision(actor, p) && actor != p && actor != d && group == cast["room"])
+                   if (_physicsService.IsCollision(actor, p) && actor != p && actor != d  && actor != l && group == cast["room"])
                    {
                         Point overlap = _physicsService.GetCollisionOverlap(actor, p);
                         if (Math.Abs(overlap.GetX()) < Math.Abs(overlap.GetY()))

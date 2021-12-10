@@ -21,7 +21,10 @@ namespace Final_Project
         public const int DOOR_HEIGHT = 80;
         public const int DOOR_WIDTH = 40;
 
-        public const int PLAYER_HEIGHT = 40;
+        public const int LEVER_HEIGHT = 13;
+        public const int LEVER_WIDTH = 22;
+
+        public const int PLAYER_HEIGHT = 60;
         public const int PLAYER_WIDTH = 40;
     }
 

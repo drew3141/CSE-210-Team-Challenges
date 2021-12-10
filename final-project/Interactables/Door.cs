@@ -11,10 +11,11 @@ namespace Final_Project.Interactables
         {
             if (unlocked) 
             {
-                //SetImage("./Assets/Door.png");
+                SetImage("./Assets/Door.png");
             }
             else {
-                //SetImage("./Assets/DoorLocked.png");
+                SetImage("./Assets/DoorLocked.png");
+                isUnlocked = false;
             }
             SetPosition(new Point(xPosition, yPosition));
             SetWidth(Constants.DOOR_WIDTH);
@@ -23,13 +24,13 @@ namespace Final_Project.Interactables
 
         public void unlockDoor()
         {
-            //SetImage("./Assets/Door.png");
+            SetImage("./Assets/Door.png");
             isUnlocked = true;
         }
 
         public void lockDoor()
         {
-            //SetImage("./Assets/DoorLocked.png");
+            SetImage("./Assets/DoorLocked.png");
             isUnlocked = false;
         }
     }
