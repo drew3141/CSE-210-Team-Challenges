@@ -24,6 +24,9 @@ namespace Final_Project
         public const int LEVER_HEIGHT = 13;
         public const int LEVER_WIDTH = 22;
 
+        public const int SPIKE_HEIGHT = 10;
+        public const int SPIKE_WIDTH = 40;
+
         public const int PLAYER_HEIGHT = 60;
         public const int PLAYER_WIDTH = 40;
     }

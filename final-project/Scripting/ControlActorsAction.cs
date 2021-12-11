@@ -91,7 +91,7 @@ namespace Final_Project.Scripting
                     }
                     foreach (Actor spike in roomObject.rooms[$"spikes{currentRoom}"])
                     {
-                        cast["levers"].Add(spike);
+                        cast["spikes"].Add(spike);
                     }
                 }
                 //Handle using levers

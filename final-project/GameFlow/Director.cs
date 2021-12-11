@@ -1,4 +1,5 @@
 using System;
+using Raylib_cs;
 using System.Collections.Generic;
 using Final_Project.Casting;
 using Final_Project.Services;
@@ -41,8 +42,6 @@ namespace Final_Project.GameFlow
                     _keepPlaying = false;
                 }
             }
-
-            Console.WriteLine("Game over!");
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 ﻿using System;
+using Raylib_cs;
 using Final_Project.Services;
 using Final_Project.Interactables;
 using Final_Project.Casting;
@@ -54,14 +55,11 @@ namespace Final_Project.GameFlow
             }
             foreach (Actor spike in roomObject.rooms[$"spikes{controlActorsAction.currentRoom}"])
             {
-                cast["levers"].Add(spike);
+                cast["spikes"].Add(spike);
             }
             cast["player"] = new List<Actor>();
             Player player = new Player();
             cast["player"].Add(player);
-
-
-            // TODO: Add additional actions here to handle the input, move the actors, handle collisions, etc.
 
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "The Box", Constants.FRAME_RATE);

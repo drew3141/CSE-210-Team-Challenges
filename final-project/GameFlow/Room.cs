@@ -103,6 +103,11 @@ namespace Final_Project.GameFlow
             rooms["doors3"].Add(door3);
             Lever lever3 = new Lever(1130,Constants.MAX_Y-520-Constants.LEVER_HEIGHT);
             rooms["levers3"].Add(lever3);
+            for (int i = 1; i < 10; i+= 2)
+            {
+                Spike spikes = new Spike(160*i + 40, Constants.MAX_Y-40-Constants.SPIKE_HEIGHT, "bottom");
+                rooms["spikes3"].Add(spikes);
+            }
             for (int i =1; i< 10; i++)
             {
                 Terrain platform1 = new Terrain(160*i, 20+120*i);
@@ -134,10 +139,16 @@ namespace Final_Project.GameFlow
                 rooms["room3"].Add(ceiling);
             }
             //Create list of actors for room 4
-            Door door4 = new Door(800, 200, true);
+            Door door4 = new Door(880, 200, true);
             rooms["doors4"].Add(door4);
             Lever lever4 = new Lever(200,Constants.MAX_Y-200-Constants.LEVER_HEIGHT);
             rooms["levers4"].Add(lever4);
+            Spike spikes4_1 = new Spike(160, 200, "top");  
+            Spike spikes4_2 = new Spike(320, 200, "top");
+            Spike spikes4_3 = new Spike(780, 200, "top");
+            rooms["spikes4"].Add(spikes4_1); 
+            rooms["spikes4"].Add(spikes4_2);  
+            rooms["spikes4"].Add(spikes4_3);          
             for (int i = 0; i < Constants.MAX_Y/Constants.TERRAIN_HEIGHT;i++)
             {
                 Terrain leftWall = new Terrain(0,i*Constants.TERRAIN_HEIGHT);
