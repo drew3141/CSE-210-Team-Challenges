@@ -37,9 +37,24 @@ namespace Final_Project.GameFlow
             Room roomObject = new Room();
             // Add each member to the cast
             cast["room"] = new List<Actor>();
+            cast["doors"] = new List<Actor>();
+            cast["levers"] = new List<Actor>();
+            cast["spikes"] = new List<Actor>();
             foreach (Actor terrain in roomObject.rooms[$"room{controlActorsAction.currentRoom}"])
             {
                 cast["room"].Add(terrain);
+            }
+            foreach (Actor door in roomObject.rooms[$"doors{controlActorsAction.currentRoom}"])
+            {
+                cast["doors"].Add(door);
+            }
+            foreach (Actor lever in roomObject.rooms[$"levers{controlActorsAction.currentRoom}"])
+            {
+                cast["levers"].Add(lever);
+            }
+            foreach (Actor spike in roomObject.rooms[$"spikes{controlActorsAction.currentRoom}"])
+            {
+                cast["levers"].Add(spike);
             }
             cast["player"] = new List<Actor>();
             Player player = new Player();

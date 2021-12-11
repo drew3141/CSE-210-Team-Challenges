@@ -32,10 +32,11 @@ namespace Final_Project.GameFlow
         {
             while (_keepPlaying)
             {
+                Player p = (Player)_cast["player"][0];
                 CueAction("input");
                 CueAction("update");
                 CueAction("output");
-                if (Raylib_cs.Raylib.WindowShouldClose())
+                if (Raylib_cs.Raylib.WindowShouldClose() | !p.isAlive)
                 {
                     _keepPlaying = false;
                 }

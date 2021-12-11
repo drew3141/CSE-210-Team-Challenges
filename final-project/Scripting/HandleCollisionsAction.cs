@@ -19,14 +19,20 @@ namespace Final_Project.Scripting
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
             Player p = (Player)cast["player"][0];
-            Door d = (Door)cast["room"][0];
-            Lever l = (Lever)cast["room"][1];
             foreach (List<Actor> group in cast.Values)
             {
                foreach (Actor actor in group)
                {
-                   if (_physicsService.IsCollision(actor, p) && actor != p && actor != d  && actor != l && group == cast["room"])
-                   {
+                    if (_physicsService.IsCollision(actor, p) && group == cast["spikes"])
+                    {
+                        p.isAlive = false;
+                    }
+                    if (_physicsService.IsCollision(actor, p) && group == cast["room"])
+                    {
+                        if (p.GetVelocity().GetY()*p.GravityModifier>30)
+                        {
+                            p.isAlive = false;
+                        }
                         Point overlap = _physicsService.GetCollisionOverlap(actor, p);
                         if (Math.Abs(overlap.GetX()) < Math.Abs(overlap.GetY()))
                         {
@@ -52,13 +58,20 @@ namespace Final_Project.Scripting
                                 // Collision on the top
                                 p.SetVelocity(new Point(p.GetVelocity().GetX(), 0));
                                 p.SetTopEdge(actor.GetBottomEdge());
+                                if (p.GravityModifier <0)
+                                {
+                                    p.CanJump = true;
+                                }
                             }
                             else
                             {
                                 // Collision on the bottom
                                 p.SetVelocity(new Point(p.GetVelocity().GetX(), 0));
                                 p.SetBottomEdge(actor.GetTopEdge());
-                                p.CanJump = true;
+                                if(p.GravityModifier>0)
+                                {
+                                    p.CanJump = true;
+                                }
                             }
                         }
                         

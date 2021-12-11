@@ -12,11 +12,17 @@ namespace Final_Project.GameFlow
         public Room()
         {
             //Create list of actors for room 1
-            rooms["room1"] = new List<Actor>();
+            for (int i = 1; i <=8; i++)
+            {
+                rooms[$"room{i}"] = new List<Actor>();
+                rooms[$"doors{i}"] = new List<Actor>();
+                rooms[$"levers{i}"] = new List<Actor>();
+                rooms[$"spikes{i}"] = new List<Actor>();
+            }
             Door door1 = new Door(720, Constants.MAX_Y-400, true);
-            rooms["room1"].Add(door1);
+            rooms["doors1"].Add(door1);
             Lever lever1 = new Lever(Constants.MAX_X,0);
-            rooms["room1"].Add(lever1);
+            rooms["levers1"].Add(lever1);
             for (int i = 0; i < Constants.MAX_Y/Constants.TERRAIN_HEIGHT;i++)
             {
                 Terrain leftWall = new Terrain(0,i*Constants.TERRAIN_HEIGHT);
@@ -48,11 +54,10 @@ namespace Final_Project.GameFlow
                 rooms["room1"].Add(platform1);
             }
             //Create list of actors for room 2
-            rooms["room2"] = new List<Actor>();
             Door door2 = new Door(Constants.MAX_X-600, Constants.MAX_Y-600, false);
-            rooms["room2"].Add(door2);
+            rooms["doors2"].Add(door2);
             Lever lever2 = new Lever(Constants.MAX_X-100,Constants.MAX_Y-520-Constants.LEVER_HEIGHT);
-            rooms["room2"].Add(lever2);
+            rooms["levers2"].Add(lever2);
             for (int i = 0; i < Constants.MAX_Y/Constants.TERRAIN_HEIGHT;i++)
             {
                 Terrain leftWall = new Terrain(0,i*Constants.TERRAIN_HEIGHT);
@@ -94,11 +99,10 @@ namespace Final_Project.GameFlow
                 rooms["room2"].Add(platform4);
             }
             //Create list of actors for room 3
-            rooms["room3"] = new List<Actor>();
             Door door3 = new Door(160, 140-Constants.DOOR_HEIGHT, false);
-            rooms["room3"].Add(door3);
+            rooms["doors3"].Add(door3);
             Lever lever3 = new Lever(1130,Constants.MAX_Y-520-Constants.LEVER_HEIGHT);
-            rooms["room3"].Add(lever3);
+            rooms["levers3"].Add(lever3);
             for (int i =1; i< 10; i++)
             {
                 Terrain platform1 = new Terrain(160*i, 20+120*i);
@@ -130,11 +134,10 @@ namespace Final_Project.GameFlow
                 rooms["room3"].Add(ceiling);
             }
             //Create list of actors for room 4
-            rooms["room4"] = new List<Actor>();
-            Door door4 = new Door(Constants.MAX_X-600, Constants.MAX_Y-600, false);
-            rooms["room4"].Add(door4);
-            Lever lever4 = new Lever(Constants.MAX_X-100,Constants.MAX_Y-520-Constants.LEVER_HEIGHT);
-            rooms["room4"].Add(lever4);
+            Door door4 = new Door(800, 200, true);
+            rooms["doors4"].Add(door4);
+            Lever lever4 = new Lever(200,Constants.MAX_Y-200-Constants.LEVER_HEIGHT);
+            rooms["levers4"].Add(lever4);
             for (int i = 0; i < Constants.MAX_Y/Constants.TERRAIN_HEIGHT;i++)
             {
                 Terrain leftWall = new Terrain(0,i*Constants.TERRAIN_HEIGHT);
@@ -154,6 +157,27 @@ namespace Final_Project.GameFlow
             {
                 Terrain ceiling = new Terrain(i*Constants.TERRAIN_WIDTH,0);
                 rooms["room4"].Add(ceiling);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                Terrain platform1 = new Terrain((i*Constants.TERRAIN_WIDTH)+120, Constants.MAX_Y-200);
+                rooms["room4"].Add(platform1);
+            }
+            for (int i = 10; i < 13; i++)
+            {
+                Terrain platform2 = new Terrain((i*Constants.TERRAIN_WIDTH)+120, Constants.MAX_Y-360);
+                rooms["room4"].Add(platform2);
+
+            }
+            for (int i = 15; i < 21; i++)
+            {
+                Terrain platform3 = new Terrain(i*Constants.TERRAIN_WIDTH+120, 160);
+                rooms["room4"].Add(platform3);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                Terrain platform4 = new Terrain((i*Constants.TERRAIN_WIDTH)+120, 160);
+                rooms["room4"].Add(platform4);
             }
         }
     }

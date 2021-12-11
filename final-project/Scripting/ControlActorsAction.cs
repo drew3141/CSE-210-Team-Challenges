@@ -24,8 +24,8 @@ namespace Final_Project.Scripting
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
             Player p = (Player)cast["player"][0];
-            Lever l = (Lever)cast["room"][1];
-            Door d = (Door)cast["room"][0];
+            Lever l = (Lever)cast["levers"][0];
+            Door d = (Door)cast["doors"][0];
             //Gravity movement
             p.SetVelocity(new Point(p.GetVelocity().GetX(),p.GetVelocity().GetY()+p.GravityModifier));
             //User input for left/right
@@ -46,7 +46,7 @@ namespace Final_Project.Scripting
             if (_inputService.IsDownPressed())
             {
                 //Handle Moving Through Doors
-                if (_physicsService.IsCollision(cast["room"][0],cast["player"][0]) && d.isUnlocked)
+                if (_physicsService.IsCollision(d,p) && d.isUnlocked)
                 {
                     currentRoom++;
                     switch (currentRoom)
@@ -55,17 +55,16 @@ namespace Final_Project.Scripting
                             //Do stuff
                             break;
                         case 2:
-                            p.SetPosition(new Point(Constants.MAX_X/2, Constants.MAX_Y-280));
+                            p.SetPosition(new Point(Constants.MAX_X/2, Constants.MAX_Y-200));
                             break;
                         case 3:
-                            p.SetPosition(new Point(100, Constants.MAX_Y-100));
+                            p.SetPosition(new Point(120, Constants.MAX_Y-200));
                             break;
                         case 4:
-                            //Do Stuff for enemy
+                            p.SetPosition(new Point(Constants.MAX_X/2, Constants.MAX_Y-200));
                             break;
                         case 5:
-                            p.SetPosition(new Point(Constants.MAX_X/2, Constants.MAX_Y-400));
-                            p.GravityModifier = -1;
+                            //Do Stuff, idk
                             break;
                         case 6:
                             //Do stuff for enemy + gravity levers
@@ -75,9 +74,24 @@ namespace Final_Project.Scripting
                             break;
                     }
                     cast["room"].Clear();
-                    foreach (Actor actor in roomObject.rooms[$"room{currentRoom.ToString()}"])
+                    cast["doors"].Clear();
+                    cast["levers"].Clear();
+                    cast["spikes"].Clear();
+                    foreach (Actor actor in roomObject.rooms[$"room{currentRoom}"])
                     {
                         cast["room"].Add(actor);
+                    }
+                    foreach (Actor door in roomObject.rooms[$"doors{currentRoom}"])
+                    {
+                        cast["doors"].Add(door);
+                    }
+                    foreach (Actor lever in roomObject.rooms[$"levers{currentRoom}"])
+                    {
+                        cast["levers"].Add(lever);
+                    }
+                    foreach (Actor spike in roomObject.rooms[$"spikes{currentRoom}"])
+                    {
+                        cast["levers"].Add(spike);
                     }
                 }
                 //Handle using levers
@@ -95,6 +109,9 @@ namespace Final_Project.Scripting
                             case 3:
                                 d.lockDoor();
                                 break;
+                            case 4:
+                                p.GravityModifier*= -1;
+                                break;
                             
                         }
                     }
@@ -110,12 +127,14 @@ namespace Final_Project.Scripting
                             case 3:
                                 d.unlockDoor();
                                 break;
+                            case 4:
+                                p.GravityModifier*= -1;
+                                break;
                             
                         }
                     }
                 }
             }
-            
         }
     }
 }
