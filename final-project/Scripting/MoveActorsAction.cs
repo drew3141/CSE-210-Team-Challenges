@@ -76,7 +76,7 @@ namespace Final_Project.Scripting
                        {
                            animationCount = 0;
                        }
-                       switch (animationCount%6)
+                       switch (animationCount)
                         {
                             case <6:
                                 if (p.GravityModifier ==1 )
