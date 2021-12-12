@@ -6,14 +6,22 @@ namespace Final_Project.Interactables
     public class Lever : Actor
     {
         public bool powerOn = false;
+        public string orientation = "";
         public int delay = 0;
         
-        public Lever(int xPosition, int yPosition)
+        public Lever(int xPosition, int yPosition, bool isTop)
         {
             SetPosition(new Point(xPosition, yPosition));
             SetWidth(Constants.LEVER_WIDTH);
             SetHeight(Constants.LEVER_HEIGHT);
-            SetImage("./Assets/LeverOff.png");
+            if (isTop) {
+                SetImage("./Assets/LeverOffTop.png");
+                orientation = "top";
+            }
+            else {
+                SetImage("./Assets/LeverOff.png");
+                orientation = "bottom";
+            }
         }
 
         public void flipState()
@@ -21,12 +29,24 @@ namespace Final_Project.Interactables
             if (powerOn)
             {
                 powerOn = false;
-                SetImage("./Assets/LeverOff.png");
+                if (orientation == "bottom")
+                {
+                    SetImage("./Assets/LeverOff.png");
+                }
+                else {
+                    SetImage("./Assets/LeverOffTop.png");
+                }
             }
             else
             {
                 powerOn = true;
-                SetImage("./Assets/LeverOn.png");
+                if (orientation == "bottom")
+                {
+                    SetImage("./Assets/LeverOn.png");
+                }
+                else {
+                    SetImage("./Assets/LeverOnTop.png");
+                }
             }
         }
     }

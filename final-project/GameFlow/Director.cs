@@ -37,11 +37,27 @@ namespace Final_Project.GameFlow
                 CueAction("input");
                 CueAction("update");
                 CueAction("output");
-                if (Raylib_cs.Raylib.WindowShouldClose() | !p.isAlive)
+                if (!p.isAlive)
+                {
+                    Reset();
+                }
+                if (Raylib_cs.Raylib.WindowShouldClose())
                 {
                     _keepPlaying = false;
                 }
             }
+        }
+
+
+        public void Reset()
+        {
+            Player p = (Player)_cast["player"][0];
+            ControlActorsAction c = (ControlActorsAction)_script["input"][0];
+            c.currentRoom = 1;
+            p.isAlive = true;
+            p.GravityModifier = 1;
+            p.SetPosition(new Point(Constants.MAX_X/2, Constants.MAX_Y-200));
+            c.MoveNextRoom(_cast);
         }
 
         /// <summary>

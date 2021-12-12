@@ -13,34 +13,67 @@ namespace Final_Project.Scripting
         PhysicsService _physicsService = new PhysicsService();
         public int currentRoom = 1;
         Room roomObject = new Room();
+        Random r = new Random();
 
         public ControlActorsAction(InputService inputService, PhysicsService physicsService)
         {
             _inputService = inputService;
             _physicsService = physicsService;
+            
+        }
+
+        public void MoveNextRoom(Dictionary<string, List<Actor>> cast)
+        {
             roomObject = new Room();
+            cast["room"].Clear();
+            cast["doors"].Clear();
+            cast["levers"].Clear();
+            cast["spikes"].Clear();
+            foreach (Actor actor in roomObject.rooms[$"room{currentRoom}"])
+            {
+                cast["room"].Add(actor);
+            }
+            foreach (Actor door in roomObject.rooms[$"doors{currentRoom}"])
+            {
+                cast["doors"].Add(door);
+            }
+            foreach (Actor lever in roomObject.rooms[$"levers{currentRoom}"])
+            {
+                cast["levers"].Add(lever);
+            }
+            foreach (Actor spike in roomObject.rooms[$"spikes{currentRoom}"])
+            {
+                cast["spikes"].Add(spike);
+            }
         }
         
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
             Player p = (Player)cast["player"][0];
-            Lever l = (Lever)cast["levers"][0];
             Door d = (Door)cast["doors"][0];
             //Gravity movement
             p.SetVelocity(new Point(p.GetVelocity().GetX(),p.GetVelocity().GetY()+p.GravityModifier));
             //User input for left/right
             Point direction = _inputService.GetDirection();
             direction = new Point(direction.GetX()*6,p.GetVelocity().GetY());
-            p.SetVelocity(direction);
+            p.Move(direction);
             //Lever Delay so it doesn't keep flipping
-            if (l.delay > 0)
+            foreach (Lever lever in cast["levers"])
             {
-                l.delay--;
+                if (lever.delay > 0)
+                {
+                    lever.delay--;
+                }
             }
             //Jump input
-            if (_inputService.IsUpPressed() && p.CanJump)
+            if (_inputService.IsUpPressed())
             {
                 p.Jump();
+                p.waitingToRelease = true;
+            }
+            else
+            {
+                p.waitingToRelease = false;
             }
             //Interacting with objects input
             if (_inputService.IsDownPressed())
@@ -52,7 +85,7 @@ namespace Final_Project.Scripting
                     switch (currentRoom)
                     {
                         case 1:
-                            //Do stuff
+                            p.SetPosition(new Point(Constants.MAX_X/2,Constants.MAX_Y-Constants.TERRAIN_HEIGHT-Constants.PLAYER_HEIGHT-200));
                             break;
                         case 2:
                             p.SetPosition(new Point(Constants.MAX_X/2, Constants.MAX_Y-200));
@@ -61,79 +94,101 @@ namespace Final_Project.Scripting
                             p.SetPosition(new Point(120, Constants.MAX_Y-200));
                             break;
                         case 4:
-                            p.SetPosition(new Point(Constants.MAX_X/2, Constants.MAX_Y-200));
+                            p.SetPosition(new Point(200, Constants.MAX_Y-200));
                             break;
                         case 5:
-                            //Do Stuff, idk
+                            p.SetPosition(new Point(Constants.MAX_X/2, Constants.MAX_Y-200));
+                            p.GravityModifier = 1;
                             break;
                         case 6:
-                            //Do stuff for enemy + gravity levers
+                            p.SetPosition(new Point(200, Constants.MAX_Y-200));
+                            p.GravityModifier = 1;
+                            break;
+                        case 7:
+                            p.SetPosition(new Point(200, Constants.MAX_Y-200));
                             break;
                         default:
                             //Say something about the game being over
                             break;
                     }
-                    cast["room"].Clear();
-                    cast["doors"].Clear();
-                    cast["levers"].Clear();
-                    cast["spikes"].Clear();
-                    foreach (Actor actor in roomObject.rooms[$"room{currentRoom}"])
-                    {
-                        cast["room"].Add(actor);
-                    }
-                    foreach (Actor door in roomObject.rooms[$"doors{currentRoom}"])
-                    {
-                        cast["doors"].Add(door);
-                    }
-                    foreach (Actor lever in roomObject.rooms[$"levers{currentRoom}"])
-                    {
-                        cast["levers"].Add(lever);
-                    }
-                    foreach (Actor spike in roomObject.rooms[$"spikes{currentRoom}"])
-                    {
-                        cast["spikes"].Add(spike);
-                    }
+                    MoveNextRoom(cast);
                 }
                 //Handle using levers
-                if (_physicsService.IsCollision(p, l) && l.delay == 0)
+                foreach (Lever lever in cast["levers"])
                 {
-                    if (l.powerOn)
+                    if (_physicsService.IsCollision(p, lever) && lever.delay == 0)
                     {
-                        l.flipState();
-                        l.delay+=10;
-                        switch (currentRoom)
+                        if (lever.powerOn)
                         {
-                            case 2:
-                                d.lockDoor();
-                                break;
-                            case 3:
-                                d.lockDoor();
-                                break;
-                            case 4:
-                                p.GravityModifier*= -1;
-                                break;
-                            
+                            lever.flipState();
+                            lever.delay+=10;
+                            switch (currentRoom)
+                            {
+                                case 2:
+                                    d.lockDoor();
+                                    break;
+                                case 3:
+                                    d.lockDoor();
+                                    break;
+                                case 4:
+                                    p.GravityModifier*= -1;
+                                    break;
+                                case 5:
+                                    p.GravityModifier*= -1;
+                                    break;
+                                case 6:
+                                    foreach (Terrain t in cast["room"])
+                                    {
+                                        t.SetPosition(new Point(r.Next(0, Constants.MAX_X-40), r.Next(0, Constants.MAX_Y-40)));
+                                    }
+                                    cast["room"][10].SetPosition(new Point(80,Constants.MAX_Y-Constants.TERRAIN_HEIGHT));
+                                    cast["room"][11].SetPosition(new Point(120,Constants.MAX_Y-Constants.TERRAIN_HEIGHT));
+                                    cast["room"][12].SetPosition(new Point(160,Constants.MAX_Y-Constants.TERRAIN_HEIGHT));
+                                    break;
+                                case 7:
+                                    break;
+                                
+                            }
                         }
-                    }
-                    else 
-                    {
-                        l.flipState();
-                        l.delay+=10;
-                        switch (currentRoom)
+                        else 
                         {
-                            case 2:
-                                d.unlockDoor();
-                                break;
-                            case 3:
-                                d.unlockDoor();
-                                break;
-                            case 4:
-                                p.GravityModifier*= -1;
-                                break;
-                            
+                            lever.flipState();
+                            lever.delay+=10;
+                            switch (currentRoom)
+                            {
+                                case 2:
+                                    d.unlockDoor();
+                                    break;
+                                case 3:
+                                    d.unlockDoor();
+                                    break;
+                                case 4:
+                                    p.GravityModifier*= -1;
+                                    break;
+                                case 5:
+                                    p.GravityModifier*= -1;
+                                    break;
+                                case 6:
+                                    foreach (Terrain t in cast["room"])
+                                    {
+                                        t.SetPosition(new Point(r.Next(0, Constants.MAX_X-40), r.Next(0, Constants.MAX_Y-40)));
+                                    }
+                                    cast["room"][10].SetPosition(new Point(80,Constants.MAX_Y-Constants.TERRAIN_HEIGHT));
+                                    cast["room"][11].SetPosition(new Point(120,Constants.MAX_Y-Constants.TERRAIN_HEIGHT));
+                                    cast["room"][12].SetPosition(new Point(160,Constants.MAX_Y-Constants.TERRAIN_HEIGHT));
+                                    break;
+                                case 7:
+                                    Actor winScreen = new Actor();
+                                    winScreen.SetImage("./Assets/WinScreen.png");
+                                    winScreen.SetPosition(new Point(Constants.MAX_X/2-200, Constants.MAX_Y/2-80));
+                                    cast["room"].Add(winScreen);
+                                    break;
+                                
+                            }
                         }
                     }
                 }
+                
             }
         }
     }

@@ -56,22 +56,29 @@ namespace Final_Project.Scripting
                             if (overlap.GetY() > 0)
                             {
                                 // Collision on the top
-                                p.SetVelocity(new Point(p.GetVelocity().GetX(), 0));
-                                p.SetTopEdge(actor.GetBottomEdge());
-                                if (p.GravityModifier <0)
+                                if (p.GetVelocity().GetY() <= 0)
                                 {
-                                    p.CanJump = true;
+                                    p.SetVelocity(new Point(p.GetVelocity().GetX(), 0));
+                                    p.SetTopEdge(actor.GetBottomEdge());
+                                    if (p.GravityModifier <0)
+                                    {
+                                        p.CanJump = true;
+                                    }
                                 }
                             }
-                            else
+                            else 
                             {
                                 // Collision on the bottom
-                                p.SetVelocity(new Point(p.GetVelocity().GetX(), 0));
-                                p.SetBottomEdge(actor.GetTopEdge());
-                                if(p.GravityModifier>0)
+                                if (p.GetVelocity().GetY() >= 0)
                                 {
-                                    p.CanJump = true;
+                                    p.SetVelocity(new Point(p.GetVelocity().GetX(), 0));
+                                    p.SetBottomEdge(actor.GetTopEdge());
+                                    if(p.GravityModifier>0)
+                                    {
+                                        p.CanJump = true;
+                                    }
                                 }
+                                
                             }
                         }
                         

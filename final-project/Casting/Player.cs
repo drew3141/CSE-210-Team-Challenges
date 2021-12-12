@@ -8,6 +8,7 @@ namespace Final_Project.Casting
         public bool CanJump = true;
         public int GravityModifier = 1;
         public bool isAlive = true;
+        public bool waitingToRelease = false;
         
         public Player()
         {
@@ -19,8 +20,31 @@ namespace Final_Project.Casting
 
         public void Jump()
         {
-            SetVelocity(new Point(GetVelocity().GetX(),-18*GravityModifier));
-            CanJump = false;
+            if (CanJump && !waitingToRelease) 
+            {
+                SetVelocity(new Point(GetVelocity().GetX(),-18*GravityModifier));
+                CanJump = false;
+            }
+        }
+
+        public void Move(Point Direction)
+        {
+            if (Direction.GetX() == 0)
+            {
+                SetVelocity(new Point(0, GetVelocity().GetY()));
+            }
+            else
+            {
+                SetVelocity(new Point(GetVelocity().GetX()+Direction.GetX(), GetVelocity().GetY()));
+                if (GetVelocity().GetX() > 7)
+                {
+                    SetVelocity(new Point(7, GetVelocity().GetY()));
+                }
+                else if (GetVelocity().GetX() < -7)
+                {
+                    SetVelocity(new Point(-7, GetVelocity().GetY()));
+                }
+            }
         }
     }
 }
