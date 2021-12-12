@@ -12,7 +12,7 @@ namespace Final_Project.Casting
         
         public Player()
         {
-            SetImage("./Assets/Napoleon.png");
+            SetImage("./Assets/PlayerRight1.png");
             SetPosition(new Point(Constants.MAX_X/2,Constants.MAX_Y-Constants.TERRAIN_HEIGHT-Constants.PLAYER_HEIGHT-200));
             SetWidth(Constants.PLAYER_WIDTH);
             SetHeight(Constants.PLAYER_HEIGHT);
