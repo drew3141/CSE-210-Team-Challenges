@@ -46,5 +46,12 @@ namespace Final_Project.Casting
                 }
             }
         }
+
+        public void Reset()
+        {
+            SetPosition(new Point(Constants.MAX_X/2, Constants.MAX_Y-200));
+            GravityModifier = 1;
+            SetImage("./Assets/PlayerRight1.png");
+        }
     }
 }

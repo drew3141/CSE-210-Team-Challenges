@@ -32,16 +32,40 @@ namespace Final_Project.Scripting
                        switch (animationCount)
                         {
                             case <6:
-                                p.SetImage("./Assets/PlayerRight1.png");
+                                if (p.GravityModifier ==1 )
+                                {
+                                    p.SetImage("./Assets/PlayerRight1.png");
+                                }
+                                else {
+                                    p.SetImage("./Assets/PlayerRight1Flipped.png");
+                                }
                                 break;
                             case <12:
-                                p.SetImage("./Assets/PlayerRight2.png");
+                                if (p.GravityModifier ==1 )
+                                {
+                                    p.SetImage("./Assets/PlayerRight2.png");
+                                }
+                                else {
+                                    p.SetImage("./Assets/PlayerRight2Flipped.png");
+                                }
                                 break;
                             case <18:
-                                p.SetImage("./Assets/PlayerRight3.png");
+                                if (p.GravityModifier ==1 )
+                                {
+                                    p.SetImage("./Assets/PlayerRight3.png");
+                                }
+                                else {
+                                    p.SetImage("./Assets/PlayerRight3Flipped.png");
+                                }
                                 break;
                             case <24:
-                                p.SetImage("./Assets/PlayerRight4.png");
+                                if (p.GravityModifier ==1 )
+                                {
+                                    p.SetImage("./Assets/PlayerRight4.png");
+                                }
+                                else {
+                                    p.SetImage("./Assets/PlayerRight4Flipped.png");
+                                }
                                 break;
                         }
                    }
@@ -55,16 +79,40 @@ namespace Final_Project.Scripting
                        switch (animationCount%6)
                         {
                             case <6:
-                                p.SetImage("./Assets/PlayerLeft1.png");
+                                if (p.GravityModifier ==1 )
+                                {
+                                    p.SetImage("./Assets/PlayerLeft1.png");
+                                }
+                                else {
+                                    p.SetImage("./Assets/PlayerLeft1Flipped.png");
+                                }
                                 break;
                             case <12:
-                                p.SetImage("./Assets/PlayerLeft2.png");
+                                if (p.GravityModifier ==1 )
+                                {
+                                    p.SetImage("./Assets/PlayerLeft2.png");
+                                }
+                                else {
+                                    p.SetImage("./Assets/PlayerLeft2Flipped.png");
+                                }
                                 break;
                             case <18:
-                                p.SetImage("./Assets/PlayerLeft3.png");
+                                if (p.GravityModifier ==1 )
+                                {
+                                    p.SetImage("./Assets/PlayerLeft3.png");
+                                }
+                                else {
+                                    p.SetImage("./Assets/PlayerLeft3Flipped.png");
+                                }
                                 break;
                             case <24:
-                                p.SetImage("./Assets/PlayerLeft4.png");
+                                if (p.GravityModifier ==1 )
+                                {
+                                    p.SetImage("./Assets/PlayerLeft4.png");
+                                }
+                                else {
+                                    p.SetImage("./Assets/PlayerLeft4Flipped.png");
+                                }
                                 break;
                         }
                    }

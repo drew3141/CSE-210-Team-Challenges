@@ -82,35 +82,7 @@ namespace Final_Project.Scripting
                 if (_physicsService.IsCollision(d,p) && d.isUnlocked)
                 {
                     currentRoom++;
-                    switch (currentRoom)
-                    {
-                        case 1:
-                            p.SetPosition(new Point(Constants.MAX_X/2,Constants.MAX_Y-Constants.TERRAIN_HEIGHT-Constants.PLAYER_HEIGHT-200));
-                            break;
-                        case 2:
-                            p.SetPosition(new Point(Constants.MAX_X/2, Constants.MAX_Y-200));
-                            break;
-                        case 3:
-                            p.SetPosition(new Point(120, Constants.MAX_Y-200));
-                            break;
-                        case 4:
-                            p.SetPosition(new Point(200, Constants.MAX_Y-200));
-                            break;
-                        case 5:
-                            p.SetPosition(new Point(Constants.MAX_X/2, Constants.MAX_Y-200));
-                            p.GravityModifier = 1;
-                            break;
-                        case 6:
-                            p.SetPosition(new Point(200, Constants.MAX_Y-200));
-                            p.GravityModifier = 1;
-                            break;
-                        case 7:
-                            p.SetPosition(new Point(200, Constants.MAX_Y-200));
-                            break;
-                        default:
-                            //Say something about the game being over
-                            break;
-                    }
+                    p.Reset();
                     MoveNextRoom(cast);
                 }
                 //Handle using levers
@@ -132,9 +104,24 @@ namespace Final_Project.Scripting
                                     break;
                                 case 4:
                                     p.GravityModifier*= -1;
+                                    if (p.GravityModifier == 1)
+                                    {
+                                        p.SetImage("./Assets/PlayerRight1.png");
+                                    }
+                                    else{
+                                        p.SetImage("./Assets/PlayerRight1Flipped.png");
+                                    }
                                     break;
                                 case 5:
                                     p.GravityModifier*= -1;
+                                    if (p.GravityModifier == 1)
+                                    {
+                                        p.SetImage("./Assets/PlayerRight1.png");
+                                    }
+                                    else{
+                                        p.SetImage("./Assets/PlayerRight1Flipped.png");
+                                    }
+                                    
                                     break;
                                 case 6:
                                     foreach (Terrain t in cast["room"])
@@ -164,9 +151,23 @@ namespace Final_Project.Scripting
                                     break;
                                 case 4:
                                     p.GravityModifier*= -1;
+                                    if (p.GravityModifier == 1)
+                                    {
+                                        p.SetImage("./Assets/PlayerRight1.png");
+                                    }
+                                    else{
+                                        p.SetImage("./Assets/PlayerRight1Flipped.png");
+                                    }
                                     break;
                                 case 5:
                                     p.GravityModifier*= -1;
+                                    if (p.GravityModifier == 1)
+                                    {
+                                        p.SetImage("./Assets/PlayerRight1.png");
+                                    }
+                                    else{
+                                        p.SetImage("./Assets/PlayerRight1Flipped.png");
+                                    }
                                     break;
                                 case 6:
                                     foreach (Terrain t in cast["room"])
