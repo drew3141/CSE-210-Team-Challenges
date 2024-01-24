@@ -4,9 +4,11 @@ namespace _04_hilo
 {
     class Program
     {
-        static void Main(string[] args)
+
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            Director _director = new Director();
+            _director.StartGame();
         }
     }
 }
